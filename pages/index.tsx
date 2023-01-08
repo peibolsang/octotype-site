@@ -143,7 +143,7 @@ export async function getStaticProps() {
       featuredPosts: [featured1,featured2],
       lastPosts: lastPosts,
     },
-    revalidate: 60,
+    revalidate: 120,
   }
 }
   

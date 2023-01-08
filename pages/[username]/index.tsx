@@ -72,7 +72,7 @@ export async function getStaticProps({ params }: Params) {
   
     return  {
       props: { allPosts: props, username: params.username.toString(),},
-      revalidate: 60,
+      revalidate: 120,
     }  
 }
 
