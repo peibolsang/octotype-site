@@ -1,1 +1,3 @@
-# octotype-site
+## Octosocial, a GitHub-based blogging platform
+
+
