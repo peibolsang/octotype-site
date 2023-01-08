@@ -60,7 +60,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
             </button>
           </div>
           <div className="mt-10 pt-10">
-            <label className="text-3xl font-bold flex justify-center items-center">Catch up with good ideas from the development community</label>
+            <label className="text-3xl xl:text-5xl font-bold flex justify-center items-center text-center">Catch up with good ideas from the development community</label>
           </div>
           <div className="mt-10 mb-6 p-4">
             <Tabs>

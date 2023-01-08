@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { text } from 'stream/consumers';
+import Typewriter from './typewriter';
 
 interface InputCursorProps {
-  text: string;
+  textarray: Array<string>;
 }
 
-const InputCursor: React.FC<InputCursorProps> = ({ text }) => {
+const InputCursor: React.FC<InputCursorProps> = ({ textarray }) => {
   const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
@@ -15,12 +17,26 @@ const InputCursor: React.FC<InputCursorProps> = ({ text }) => {
     return () => clearInterval(interval);
   }, []);
 
+  const [arrayIndex, setArrayIndex] = useState(0);
+  const [currentValue, setCurrentValue] = useState(textarray[textarray.length-1])
+
+  useEffect(() => {
+     setTimeout(() => {
+      setCurrentValue(textarray[arrayIndex])
+      const nextIndex = (arrayIndex + 1)
+      setArrayIndex(nextIndex === textarray.length ? 0 : nextIndex)
+    }, 5000);
+
+    return 
+  }, [currentValue]);
+
+
   return (
     <span className="inline-block relative">
-      {text}
-      {showCursor && (
-        <span className="text-black-600 animate-blink cursor-pointer absolute">|</span>
-      )}
+        <Typewriter text={currentValue}/>
+        {showCursor && (
+          <span className="text-black-600 animate-blink cursor-pointer absolute">|</span>
+        )}
     </span>
   );
 };
