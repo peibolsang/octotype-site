@@ -31,7 +31,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                 Step 1
               </div>
               <div className="bg-white dark:bg-slate-800 dark:text-white rounded-b-3xl text-center md:pt-15 md:pb-15 md:pl-10 md:pr-10 p-10 md:text-2xl font-bold text-gray-600">
-                Create a GitHub repo <mark className="dark:bg-gray-400 dark:text-gray-600 bg-gray-200 pl-1 pr-1 text-gray-400 font-normal">:user/octotype</mark>
+                Create a GitHub repo <mark className="dark:bg-gray-400 dark:text-gray-200 bg-gray-200 pl-1 pr-1 text-gray-400 font-normal">:user/octotype</mark>
               </div>
             </div>
             <div className="rounded-3xl p-1 transition-all w-full bg-gradient-to-r from-[#818CF8] to-[#818CF8]">
@@ -39,7 +39,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                 Step 2
               </div>
               <div className="bg-white dark:bg-slate-800 dark:text-white rounded-b-3xl text-center md:pt-15 md:pb-15 md:pl-10 md:pr-10 p-10 md:text-2xl font-bold text-gray-600">
-                Create an issue and apply the <mark className="dark:bg-gray-400 dark:text-gray-600 bg-gray-200 pl-1 pr-1 text-gray-400 font-normal">published</mark> label
+                Create an issue and apply the <mark className="dark:bg-gray-400 dark:text-gray-200 bg-gray-200 pl-1 pr-1 text-gray-400 font-normal">published</mark> label
               </div>
             </div>
             <div className="rounded-3xl dark:bg-slate-800 dark:text-white p-1 transition-all w-full bg-gradient-to-r from-[#818CF8] to-[#D8B4FE]">
@@ -47,7 +47,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                 Step 3
               </div>
               <div className="bg-white dark:bg-slate-800 dark:text-white rounded-b-3xl text-center md:pt-15 md:pb-15 md:pl-10 md:pr-10 p-10 md:text-2xl font-bold text-gray-600">
-                Share your story from <mark className="dark:bg-gray-400 dark:text-gray-600 bg-gray-200 pl-1 pr-1 text-gray-400 font-normal">octotype.vercel.app/:user</mark>
+                Share your story from <mark className="dark:bg-gray-400 dark:text-gray-200 bg-gray-200 pl-1 pr-1 text-gray-400 font-normal">octotype.vercel.app/:user</mark>
               </div>
             </div>
           </div>
