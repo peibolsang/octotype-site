@@ -19,6 +19,7 @@ type PostType = {
   reactions_count: string
   reactions: Reactions
   comments: Array<Comment>
+  reading_time: string
 }
 
 export default PostType

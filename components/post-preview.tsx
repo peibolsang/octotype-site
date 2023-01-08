@@ -15,6 +15,7 @@ type Props = {
   } 
   comments_count: string,
   reactions_count: string,
+  reading_time: string
 }
 
 const PostPreview = ({
@@ -24,7 +25,8 @@ const PostPreview = ({
   author,
   slug,
   comments_count,
-  reactions_count
+  reactions_count,
+  reading_time
 }: Props) => {
   return (
     <div>
@@ -38,7 +40,7 @@ const PostPreview = ({
         </Link>
       </h3>
       <div className={(excerpt==="" ? "mb-5 text-l":"text-l") }>
-        <DateFormatter dateString={date} />
+        <DateFormatter dateString={date} /> - {reading_time} minutes read
       </div>
       <div
         className={markdownStyles['markdown']}

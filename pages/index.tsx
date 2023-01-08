@@ -79,6 +79,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                             excerpt={""}
                             comments_count={post.comments_count}
                             reactions_count={post.reactions_count}
+                            reading_time={post.reading_time}
                           />
                       </div>
                     </div>
@@ -101,6 +102,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                             excerpt={""}
                             comments_count={post.comments_count}
                             reactions_count={post.reactions_count}
+                            reading_time={post.reading_time}
                           />
                       </div>
                     </div>

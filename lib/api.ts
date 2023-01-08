@@ -31,6 +31,20 @@ export async function fetchGitHubAPI(url: string){
   return response
 }
 
+function calculateReadingTime(text) {
+  // Average reading speed is around 200-300 words per minute
+  const readingSpeed = 250;
+
+  // Calculate the number of words in the text
+  const wordCount = text.split(/\s+/).length;
+
+  // Calculate the number of minutes it would take to read the text
+  const readingTime = Math.round(wordCount / readingSpeed);
+
+  return readingTime === 0 ? "1" : readingTime.toString()
+
+}
+
 
 /*
  *
@@ -109,7 +123,8 @@ export async function getPostFromGitHubIssue(item) {
     comments_count: item.comments,
     reactions_count: item.reactions.total_count,
     reactions: issuereactions,
-    comments: []
+    comments: [],
+    reading_time: calculateReadingTime(item.body)
   }
   return post;
 }

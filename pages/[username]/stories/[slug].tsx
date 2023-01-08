@@ -48,6 +48,7 @@ export default function Post({ post }: Props) {
                   author={post.author}
                   issuenumber={post.slug.number}
                   reactions={post.reactions}
+                  reading_time={post.reading_time}
                 />
                 <PostBody content={post.content} />
               </article>)

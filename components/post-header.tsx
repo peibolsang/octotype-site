@@ -10,9 +10,10 @@ type Props = {
   author: Author
   issuenumber: string
   reactions: Reactions
+  reading_time: string
 }
 
-const PostHeader = ({ title, date, author, issuenumber, reactions }: Props) => {
+const PostHeader = ({ title, date, author, issuenumber, reactions, reading_time }: Props) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>
@@ -21,7 +22,7 @@ const PostHeader = ({ title, date, author, issuenumber, reactions }: Props) => {
       </div>
       <div>
         <div className="text-l mb-5">
-          <DateFormatter dateString={date} />
+          <DateFormatter dateString={date} /> - {reading_time} minute{reading_time==="1"? "":"s"} read
         </div>
       </div>
       <div className="md:flex items-center sm:flex flex-row">

@@ -40,6 +40,7 @@ export default function Main({ allPosts, username}: Props) {
                     excerpt={featuredPost.excerpt}
                     comments_count={featuredPost.comments_count}
                     reactions_count={featuredPost.reactions_count}
+                    reading_time={featuredPost.reading_time}
                   />
                   )
                  :
