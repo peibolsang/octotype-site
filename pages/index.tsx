@@ -15,28 +15,6 @@ type Props = {
 }
 
 export default function Index({featuredPosts,lastPosts}: Props) {
-
-  const [touchStart, setTouchStart] = useState(null)
-  const [touchEnd, setTouchEnd] = useState(null)
-
-  // the required distance between touchStart and touchEnd to be detected as a swipe
-  const minSwipeDistance = 50 
-
-  const onTouchStart = (e) => {
-  setTouchEnd(null) // otherwise the swipe is fired even with usual touch events
-  setTouchStart(e.targetTouches[0].clientX)
-  }
-
-  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX)
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return
-    const distance = touchStart - touchEnd
-    const isLeftSwipe = distance > minSwipeDistance
-    const isRightSwipe = distance < -minSwipeDistance
-    // add your conditional logic here
-  }
-
   return (
     <div className="dark:bg-slate-800 dark:text-white">
       <Layout>
@@ -90,7 +68,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
               <div className="pt-6"title="Featured Stories">
                 <Carousel>
                   {featuredPosts.map((post) => (
-                    <div onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd} className="w-full md:ml-12 md:mr-12">
+                    <div className="w-full md:ml-12 md:mr-12">
                       <div className="grid grid-cols-1 md:grid-cols-1 rounded-xl md:gap-x-16 lg:gap-x-32 gap-y-20 p-1 transition-all w-full border-2 border-black dark:border-white">
                         <div className="w-full p-5 rounded-xl">
                           <PostPreview
@@ -112,7 +90,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
               <div className="pt-6" title="Latest Stories">
                 <Carousel>
                   {lastPosts.map((post) => (
-                    <div onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd} className="w-full md:ml-12 md:mr-12">
+                    <div className="w-full md:ml-12 md:mr-12">
                       <div className="grid grid-cols-1 md:grid-cols-1 rounded-xl md:gap-x-16 lg:gap-x-32 gap-y-20 p-1 transition-all w-full border-2 border-black dark:border-white">
                         <div className="w-full p-5 rounded-xl">
                           <PostPreview
