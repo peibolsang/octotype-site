@@ -7,7 +7,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider enableSystem={true} attribute="class">
-      <Component {...pageProps} />
+        <Component {...pageProps} />
+        <Analytics/>
       </ThemeProvider>
       
     </>
