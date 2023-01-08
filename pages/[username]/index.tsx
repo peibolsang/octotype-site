@@ -7,6 +7,7 @@ import MoreStories from '../../components/more-stories'
 import Intro from '../../components/intro'
 import PostPreview from '../../components/post-preview'
 import MainHeader from '../../components/main-header'
+import {HOME_OG_IMAGE_URL} from '../../lib/constants'
 
 type Props = {
   allPosts: Array<PostType>,
@@ -22,6 +23,10 @@ export default function Main({ allPosts, username}: Props) {
       <Layout>
         <Head>
           <title>{username} on octotype</title>
+          <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={HOME_OG_IMAGE_URL} />
+          <meta name="twitter:title" content={username} />
         </Head>
         <Container>
           <MainHeader />

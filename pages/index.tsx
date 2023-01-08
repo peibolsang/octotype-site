@@ -7,6 +7,7 @@ import Carousel from '../components/carousel'
 import { getAllPosts, getAllUsers, getPost } from '../lib/api'
 import PostType from '../interfaces/post'
 import PostPreview from '../components/post-preview'
+import {HOME_OG_IMAGE_URL} from '../lib/constants'
 
 type Props = {
   featuredPosts: Array<PostType>,
@@ -19,6 +20,10 @@ export default function Index({featuredPosts,lastPosts}: Props) {
       <Layout>
         <Head>
           <title>octotype - The content discovery platform for developers</title>
+          <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={HOME_OG_IMAGE_URL} />
+          <meta name="twitter:title" content="octotype - The content discovery platform for developers" />
         </Head>
         <Container>
           <MainIntro />
