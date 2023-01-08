@@ -30,7 +30,7 @@ const PostPreview = ({
 }: Props) => {
   return (
     <div>
-      <h3 className="text-5xl mb-2 leading-snug font-bold">
+      <h3 className="text-3xl xl:text-5xl mb-2 leading-snug font-bold">
         <Link
           as={`/${author.name}/stories/${slug.number}`}
           href={`/${author.name}/stories/[slug]`}

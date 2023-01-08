@@ -22,7 +22,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
         </Head>
         <Container>
           <MainIntro />
-          <div className="text-xl md:text-2xl text-gray-400 text-center md:pl-40 md:pr-40">
+          <div className="text-xl md:text-2xl text-gray-400 text-center md:pl-40 md:pr-40 md:pt-56 xl:pt-0">
           Octotype is a blog platform that allows developers to easily create and publish stories using GitHub Issues as a CMS. It streamlines the process of publishing, allowing authors to go from idea to publication in just three steps.
           </div>
           <div className="grid grid-cols-1 xl:grid-cols-3 md:gap-x-16 xl:gap-x-32 gap-y-10 mb-5 mt-4 p-6">
