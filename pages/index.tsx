@@ -7,7 +7,6 @@ import Carousel from '../components/carousel'
 import { getAllPosts, getAllUsers, getPost } from '../lib/api'
 import PostType from '../interfaces/post'
 import PostPreview from '../components/post-preview'
-import { useState } from 'react'
 
 type Props = {
   featuredPosts: Array<PostType>,
@@ -109,7 +108,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                   ))}
                 </Carousel>
               </div>
-    </Tabs>
+            </Tabs>
           </div> 
         </Container>
       </Layout>

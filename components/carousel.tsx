@@ -37,8 +37,8 @@ const Carousel = ({ children }) => {
     }
 
     setTouchPosition(null)
-}
-
+  }
+  
   return (
     <>
     <div className="flex items-center">

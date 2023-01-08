@@ -17,12 +17,12 @@ const PostComments = ({ comments, issuenumber, username }: Props) => {
       <h3 className="mb-8 text-4xl md:text-4xl font-bold tracking-tighter leading-tight">
         Comments {comments.length>0 ? ` (${comments.length})`: ""}
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-1 md:gap-y-8 mb-6">
+      <div className="grid grid-cols-1 gap-y-8 mb-6">
         {
         (comments.length==0 || comments[0].content) ? (
           comments.map((comment) => (
             <div className="border-2 border-color-gray rounded-xl">
-              <div className="flex items-center bg-gray-100 rounded-t-xl p-3">
+              <div className="flex items-center dark:bg-slate-400 dark:text-white bg-gray-100 rounded-t-xl p-3">
                 <Avatar key={comment.date} name={comment.author.name} picture={comment.author.picture} html_url={comment.author.html_url} />
                 <span className="ml-1 mr-1">on</span>
                 <DateFormatter key={comment.date} dateString={comment.date} />
