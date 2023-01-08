@@ -14,7 +14,7 @@ const Typewriter = ({ text }) => {
     }, 100);
   }, [text]);
 
-  return <span><mark className="dark:bg-[#818CF8] dark:text-gray-300 bg-gray-100 pl-1 pr-1 text-[#818CF8]">{typedText}</mark></span>;
+  return <span><mark className="dark:bg-[#818CF8] dark:text-gray-300 bg-gray-200 pl-1 pr-1 text-[#818CF8]">{typedText}</mark></span>;
 };
 
 export default Typewriter;

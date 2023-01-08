@@ -35,7 +35,7 @@ const InputCursor: React.FC<InputCursorProps> = ({ textarray }) => {
     <span className="inline-block relative">
         <Typewriter text={currentValue}/>
         {showCursor && (
-          <span className="text-black-600 animate-blink cursor-pointer absolute">|</span>
+          <span className="dark:text-gray-300 text-[#818CF8] animate-blink cursor-pointer absolute">|</span>
         )}
     </span>
   );
