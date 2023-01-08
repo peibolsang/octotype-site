@@ -34,10 +34,10 @@ const Meta = () => {
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta
         name="description"
-        content={`Pablo Bermejo's Blog`}
+        content={`octotype - Content discovery for developers using GitHub issues as CMS`}
       />
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
-      <meta property="og:description" content="Pablo Bermejo's blog"/>
+      <meta property="og:description" content="octotype - Content discovery for developers using GitHub issues as CMS"/>
     </Head>
   )
 }

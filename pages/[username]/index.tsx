@@ -21,7 +21,7 @@ export default function Main({ allPosts, username}: Props) {
     <div className="dark:bg-slate-800 dark:text-white">
       <Layout>
         <Head>
-          <title>Pablo Bermejo's Blog</title>
+          <title>{username} on octotype</title>
         </Head>
         <Container>
           <MainHeader />

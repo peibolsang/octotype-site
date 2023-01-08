@@ -6,7 +6,7 @@ const Footer = () => {
       <Container>
         <div className="py-16">
           <h5 className="flex justify-center">
-            <a className="underline underline-offset-4" href="https://github.com/peibolsang">Created with ❤️ by Pablo</a>
+            <a className="underline underline-offset-4" href="https://github.com/peibolsang">Created with ❤️</a>
           </h5>
         </div>
       </Container>
