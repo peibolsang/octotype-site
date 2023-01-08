@@ -40,7 +40,7 @@ const PostPreview = ({
         </Link>
       </h3>
       <div className={(excerpt==="" ? "mb-5 text-l":"text-l") }>
-        <DateFormatter dateString={date} /> - {reading_time} minutes read
+        <DateFormatter dateString={date} /> · {reading_time} minute{reading_time==="1"? "":"s"} read
       </div>
       <div
         className={markdownStyles['markdown']}

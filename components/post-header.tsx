@@ -22,7 +22,7 @@ const PostHeader = ({ title, date, author, issuenumber, reactions, reading_time 
       </div>
       <div>
         <div className="text-l mb-5">
-          <DateFormatter dateString={date} /> - {reading_time} minute{reading_time==="1"? "":"s"} read
+          <DateFormatter dateString={date} /> · {reading_time} minute{reading_time==="1"? "":"s"} read
         </div>
       </div>
       <div className="md:flex items-center sm:flex flex-row">
