@@ -91,7 +91,7 @@ export async function getPostFromGitHubIssue(item) {
   const issueauthor: Author = {
     name: item.user.login,
     picture: item.user.avatar_url,
-    html_url: "/@"+item.user.login
+    html_url: "/"+item.user.login
   }
 
   const issuereactions: Reactions = {
