@@ -15,17 +15,11 @@ type Props = {
   username: string
 }
 
-function removeAtSymbol(str) {
-  if (str[0] === "@") {
-    return str.slice(1);
-  }
-  return str;
-}
 
 export default function Main({ allPosts, username}: Props) {
   const featuredPost = allPosts[0]
   const morePosts = allPosts.slice(1)
-  const finalusername = removeAtSymbol(username)
+  const finalusername = username
   return (
     <div className="dark:bg-slate-800 dark:text-white">
       <Layout>
@@ -76,7 +70,7 @@ type Params = {
 
 export async function getStaticProps({ params }: Params) {
 
-    const allPosts = await getAllPosts(removeAtSymbol(params.username))
+    const allPosts = await getAllPosts(params.username)
 
     const props = allPosts? 
       (allPosts[0]? allPosts : ["No posts found 🫣"]) 
@@ -84,7 +78,7 @@ export async function getStaticProps({ params }: Params) {
       (["Ooooops 🥺. Couldn't fetch posts. There was an error calling the GitHub Issues API"])
   
     return  {
-      props: { allPosts: props, username: removeAtSymbol(params.username.toString()),},
+      props: { allPosts: props, username: params.username.toString(),},
       revalidate: 120,
     }  
 }
@@ -96,7 +90,7 @@ export async function getStaticPaths() {
     .map(
       (user) => [{
         params: {
-          username: ["@"+user]
+          username: [user]
         }
       }]
     )

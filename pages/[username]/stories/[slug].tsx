@@ -17,12 +17,7 @@ type Props = {
   morePosts: PostType[]
 }
 
-function removeAtSymbol(str) {
-  if (str[0] === "@") {
-    return str.slice(1);
-  }
-  return str;
-}
+
 
 
 export default function Post({ post }: Props) {
@@ -87,9 +82,9 @@ type Params = {
 }
 
 export async function getStaticProps({ params }: Params) {
-  const post = await getPost(removeAtSymbol(params.username),params.slug)
+  const post = await getPost(params.username,params.slug)
 
-  const commentsdata = post ? await getPostComments(removeAtSymbol(params.username), params.slug) : [""]
+  const commentsdata = post ? await getPostComments(params.username, params.slug) : [""]
   const comments = commentsdata ? commentsdata : ["Ooooops 🥺. Couldn't fetch comments. There was an error calling the GitHub Issues API"]
   const content = post ? await markdownToHtml(post.content || '') : "Ooooops 🥺. Couldn't fetch post. There was an error calling the GitHub Issues API"
   const slug = post ? post.slug : { number: "0"}
@@ -118,7 +113,7 @@ export async function getStaticPaths() {
         const paths = posts ? posts.map((post) => {
           return {
             params: {
-              username: ["@"+user,"stories",post.slug.number],
+              username: [user,"stories",post.slug.number],
             },
           }
         })
@@ -126,7 +121,7 @@ export async function getStaticPaths() {
         [
           {
             params: {
-              username: ["@"+user,"stories","0"]
+              username: [user,"stories","0"]
           },
           }
         ]

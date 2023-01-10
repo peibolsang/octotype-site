@@ -57,7 +57,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                 Step 3
               </div>
               <div className="bg-white dark:bg-slate-800 dark:text-white rounded-b-3xl text-center md:pt-15 md:pb-15 md:pl-10 md:pr-10 p-10 md:text-2xl font-bold text-gray-600">
-                Share your story from <mark className="dark:bg-gray-400 dark:text-gray-200 bg-gray-200 pl-1 pr-1 text-gray-400 font-normal">octotype.app/@[user]</mark>
+                Share your story from <mark className="dark:bg-gray-400 dark:text-gray-200 bg-gray-200 pl-1 pr-1 text-gray-400 font-normal">octotype.app/[user]</mark>
               </div>
             </div>
           </div>
