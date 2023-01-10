@@ -2,19 +2,24 @@ import Container from '../components/container'
 import Layout from '../components/layout'
 import Head from 'next/head'
 import MainIntro from '../components/main-intro'
-import Tabs from '../components/tabs'
+import Tabs, {Tab} from '../components/tabs'
 import Carousel from '../components/carousel'
 import { getAllPosts, getAllUsers, getPost } from '../lib/api'
 import PostType from '../interfaces/post'
 import PostPreview from '../components/post-preview'
 import {HOME_OG_IMAGE_URL} from '../lib/constants'
+import { useState } from 'react'
 
 type Props = {
   featuredPosts: Array<PostType>,
   lastPosts: Array<PostType>,
 }
 
+
+
 export default function Index({featuredPosts,lastPosts}: Props) {
+  const [activeTabIndex, setActiveTabIndex] = useState(0)
+
   return (
     <div className="dark:bg-slate-800 dark:text-white">
       <Layout>
@@ -36,7 +41,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                 Step 1
               </div>
               <div className="bg-white dark:bg-slate-800 dark:text-white rounded-b-3xl text-center md:pt-15 md:pb-15 md:pl-10 md:pr-10 p-10 md:text-2xl font-bold text-gray-600">
-                Create a GitHub repo <mark className="dark:bg-gray-400 dark:text-gray-200 bg-gray-200 pl-1 pr-1 text-gray-400 font-normal">:user/octotype</mark>
+                Create a GitHub repo <mark className="dark:bg-gray-400 dark:text-gray-200 bg-gray-200 pl-1 pr-1 text-gray-400 font-normal">[user]/octotype</mark>
               </div>
             </div>
             <div className="rounded-3xl p-1 transition-all w-full bg-gradient-to-r from-[#818CF8] to-[#818CF8]">
@@ -52,7 +57,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                 Step 3
               </div>
               <div className="bg-white dark:bg-slate-800 dark:text-white rounded-b-3xl text-center md:pt-15 md:pb-15 md:pl-10 md:pr-10 p-10 md:text-2xl font-bold text-gray-600">
-                Share your story from <mark className="dark:bg-gray-400 dark:text-gray-200 bg-gray-200 pl-1 pr-1 text-gray-400 font-normal">octotype.vercel.app/:user</mark>
+                Share your story from <mark className="dark:bg-gray-400 dark:text-gray-200 bg-gray-200 pl-1 pr-1 text-gray-400 font-normal">octotype.app/@[user]</mark>
               </div>
             </div>
           </div>
@@ -69,8 +74,8 @@ export default function Index({featuredPosts,lastPosts}: Props) {
           </div>
           <div className="mt-10 mb-6 p-4">
             <Tabs>
-              <div className="pt-6"title="Featured Stories">
-                <Carousel>
+              <Tab title="Featured Stories" onClick={()=>setActiveTabIndex(0)}>
+                <Carousel activeIndex={activeTabIndex}>
                   {featuredPosts.map((post) => (
                     <div className="w-full md:ml-12 md:mr-12">
                       <div className="grid grid-cols-1 md:grid-cols-1 rounded-xl md:gap-x-16 lg:gap-x-32 gap-y-20 p-1 transition-all w-full border-2 border-black dark:border-white">
@@ -91,9 +96,9 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                   </div>
                   ))}
                 </Carousel>
-              </div>
-              <div className="pt-6" title="Latest Stories">
-                <Carousel>
+              </Tab>
+              <Tab title="Latest Stories" onClick={()=>setActiveTabIndex(0)}>
+                <Carousel activeIndex={activeTabIndex}>
                   {lastPosts.map((post) => (
                     <div className="w-full md:ml-12 md:mr-12">
                       <div className="grid grid-cols-1 md:grid-cols-1 rounded-xl md:gap-x-16 lg:gap-x-32 gap-y-20 p-1 transition-all w-full border-2 border-black dark:border-white">
@@ -114,7 +119,7 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                   </div>
                   ))}
                 </Carousel>
-              </div>
+              </Tab>
             </Tabs>
           </div> 
         </Container>

@@ -20,6 +20,7 @@ type PostType = {
   reactions: Reactions
   comments: Array<Comment>
   reading_time: string
+  html_url: string
 }
 
 export default PostType

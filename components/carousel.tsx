@@ -1,14 +1,14 @@
 import { useState } from 'react'
 
-const Carousel = ({ children }) => {
-  const [activeIndex, setActiveIndex] = useState(0)
+const Carousel = ({ children, activeIndex }) => {
+  const [currentIndex, setCurrentIndex] = useState(activeIndex)
 
   const handleNext = () => {
-    setActiveIndex(activeIndex < children.length - 1 ? activeIndex + 1 : 0)
+    setCurrentIndex(currentIndex < children.length - 1 ? currentIndex + 1 : 0)
   }
 
   const handlePrev = () => {
-    setActiveIndex(activeIndex > 0 ? activeIndex - 1 : children.length - 1)
+    setCurrentIndex(currentIndex > 0 ? currentIndex - 1 : children.length - 1)
   }
 
   const [touchPosition, setTouchPosition] = useState(null)
@@ -53,7 +53,7 @@ const Carousel = ({ children }) => {
         </button>
       </div>
       <div onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} className="flex items-center justify-center w-full">
-        {children[activeIndex]}
+        {children[currentIndex]}
       </div>
       <div className="hidden md:block">
         <button
