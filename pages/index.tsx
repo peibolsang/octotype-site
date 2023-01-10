@@ -138,7 +138,7 @@ export async function getStaticProps() {
   )
   
   const lastPosts = allPosts
-    .reduce((acc,cur)=>acc.concat(cur,[]))
+    .reduce((acc,cur)=>acc.concat(cur),[])
     .sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime();
     })
