@@ -92,6 +92,7 @@ export async function getStaticPaths() {
         }
       }]
     )
+    .reduce(item=>item,[])
   :
   [
     {
