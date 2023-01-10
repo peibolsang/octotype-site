@@ -6,7 +6,7 @@ import PostBody from '../../../components/post-body'
 import Header from '../../../components/header'
 import PostHeader from '../../../components/post-header'
 import Layout from '../../../components/layout'
-import { getPost, getPostComments } from '../../../lib/api'
+import { getAllPosts, getAllUsers, getPost, getPostComments } from '../../../lib/api'
 import PostTitle from '../../../components/post-title'
 import Head from 'next/head'
 import markdownToHtml from '../../../lib/markdownToHtml'
@@ -77,9 +77,8 @@ type Params = {
   }
 }
 
-export async function getServerSideProps({ params }: Params) {
-  
-  const post = await getPost(params.username, params.slug)
+export async function getStaticProps({ params }: Params) {
+  const post = await getPost(params.username,params.slug)
 
   const commentsdata = post ? await getPostComments(params.username, params.slug) : [""]
   const comments = commentsdata ? commentsdata : ["Ooooops 🥺. Couldn't fetch comments. There was an error calling the GitHub Issues API"]
@@ -94,6 +93,50 @@ export async function getServerSideProps({ params }: Params) {
         comments,
         slug
       },
-    }
+    },
+    revalidate: 60
   }
+}
+
+export async function getStaticPaths() {
+
+  const users = await getAllUsers()
+
+  const finalpaths = users ? users
+    .map(
+      async (user) =>{ 
+        const posts = await getAllPosts(user)
+        const paths = posts ? posts.map((post) => {
+          return {
+            params: {
+              username: [user,"stories",post.slug.number],
+            },
+          }
+        })
+        :
+        [
+          {
+            params: {
+              username: [user,"stories","0"]
+          },
+          }
+        ]
+        return paths
+      }
+    )
+    .reduce(item=>item,[])
+  :
+  [
+    {
+      params: {
+        username: ["user","stories","0"]
+    },
+    }
+  ]
+
+  return {
+    paths: finalpaths,
+    fallback: 'blocking',
+  }
+
 }

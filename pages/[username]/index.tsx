@@ -84,35 +84,19 @@ export async function getStaticProps({ params }: Params) {
 export async function getStaticPaths() {
 
   const users = await getAllUsers()
-
   const finalpaths = users ? users
     .map(
-      async (user) =>{ 
-        const posts = await getAllPosts(user)
-        const paths = posts ? posts.map((post) => {
-          return {
-            params: {
-              username: [user,"stories",post.slug.number],
-            },
-          }
-        })
-        :
-        [
-          {
-            params: {
-              username: [user,"stories","0"]
-          },
-          }
-        ]
-        return paths
-      }
+      (user) => [{
+        params: {
+          username: [user]
+        }
+      }]
     )
-    .reduce(item=>item,[])
   :
   [
     {
       params: {
-        username: ["user","stories","0"]
+        username: ["user"]
     },
     }
   ]
