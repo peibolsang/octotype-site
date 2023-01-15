@@ -75,7 +75,7 @@ export async function getStaticProps({ params }: Params) {
     const props = allPosts? 
       (allPosts[0]? allPosts : ["No posts found 🫣"]) 
       : 
-      (["Ooooops 🥺. Couldn't fetch posts. There was an error calling the GitHub Issues API"])
+      (["Nothing to see here 🤓. It seems this user has not created an octotype repo yet! "])
   
     return  {
       props: { allPosts: props, username: params.username.toString(),},
