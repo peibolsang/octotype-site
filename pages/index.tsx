@@ -2,13 +2,13 @@ import Container from '../components/container'
 import Layout from '../components/layout'
 import Head from 'next/head'
 import MainIntro from '../components/main-intro'
-import Tabs, {Tab} from '../components/tabs'
 import Carousel from '../components/carousel'
 import { getAllPosts, getAllUsers, getPost } from '../lib/api'
 import PostType from '../interfaces/post'
 import PostPreview from '../components/post-preview'
 import {HOME_OG_IMAGE_URL} from '../lib/constants'
 import { useState } from 'react'
+import * as Tabs from '@radix-ui/react-tabs';
 
 type Props = {
   featuredPosts: Array<PostType>,
@@ -72,14 +72,22 @@ export default function Index({featuredPosts,lastPosts}: Props) {
           <div className="mt-10 pt-10">
             <label className="text-3xl xl:text-5xl font-bold flex justify-center items-center text-center">Catch up with good ideas from the development community</label>
           </div>
-          <div className="mt-10 mb-6 p-4">
-            <Tabs>
-              <Tab title="Featured Stories" onClick={()=>setActiveTabIndex(0)}>
-                <Carousel activeIndex={activeTabIndex}>
+          <div className="mt-10 mb-6 p-4 flex justify-center">
+          <Tabs.Root className="flex flex-col w-full" defaultValue="tab1">
+            <Tabs.List className="flex justify-center text-center">
+              <Tabs.Trigger className="data-[state=active]:shadow-[inset_0px_-2px_0px_0px_rgba(129,140,248,1)] dark:text-white py-0 px-4 pt-4 pb-4 flex justify-center leading-none select-none" value="tab1">
+                Featured Stories
+              </Tabs.Trigger>
+              <Tabs.Trigger className="data-[state=active]:shadow-[inset_0px_-2px_0px_0px_rgba(129,140,248,1)] dark:text-white py-0 px-4 pt-4 pb-4 flex justify-center leading-none select-none" value="tab2">
+                Latest Stories
+              </Tabs.Trigger>
+            </Tabs.List>
+            <Tabs.Content className="p-4 focus:shadow-outline-black" value="tab1">
+              <Carousel activeIndex={activeTabIndex}>
                   {featuredPosts.map((post) => (
                     <div className="w-full md:ml-12 md:mr-12">
                       <div className="grid grid-cols-1 md:grid-cols-1 rounded-xl md:gap-x-16 lg:gap-x-32 gap-y-20 p-1 transition-all w-full border-2 border-black dark:border-white">
-                        <div className="w-full p-5 rounded-xl">
+                        <div className="h-[32rem] md:h-80 w-full p-5 rounded-xl">
                           <PostPreview
                             key={post.slug.number}
                             title={post.title}
@@ -96,13 +104,13 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                   </div>
                   ))}
                 </Carousel>
-              </Tab>
-              <Tab title="Latest Stories" onClick={()=>setActiveTabIndex(0)}>
-                <Carousel activeIndex={activeTabIndex}>
+            </Tabs.Content>
+            <Tabs.Content className="p-4 focus:shadow-outline-black" value="tab2">
+              <Carousel activeIndex={activeTabIndex}>
                   {lastPosts.map((post) => (
                     <div className="w-full md:ml-12 md:mr-12">
                       <div className="grid grid-cols-1 md:grid-cols-1 rounded-xl md:gap-x-16 lg:gap-x-32 gap-y-20 p-1 transition-all w-full border-2 border-black dark:border-white">
-                        <div className="w-full p-5 rounded-xl">
+                        <div className="h-[32rem] md:h-80 w-full p-5 rounded-xl">
                           <PostPreview
                             key={post.slug.number}
                             title={post.title}
@@ -119,8 +127,8 @@ export default function Index({featuredPosts,lastPosts}: Props) {
                   </div>
                   ))}
                 </Carousel>
-              </Tab>
-            </Tabs>
+            </Tabs.Content>
+          </Tabs.Root>
           </div> 
         </Container>
       </Layout>

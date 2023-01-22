@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+
 const Tabs = ({ children }) => {
   const [activeTab, setActiveTab] = useState(0)
   return (
@@ -22,21 +23,13 @@ const Tabs = ({ children }) => {
   )
 }
 
-
-const TabContainer = ({ children }) => {
+const Tab = ({ title, children, onClick }) => {
   return (
-    <div>
+    <div className="pt-6" onClick={onClick}>
       {children}
     </div>
   )
 }
 
-export const Tab = ({ title, children, onClick }) => {
-  return (
-    <div className="pt-6" onClick={onClick}>
-      <TabContainer>{children}</TabContainer>
-    </div>
-  )
-}
-
 export default Tabs
+export { Tab }
