@@ -1,16 +1,18 @@
-import markdownStyles from './markdown-styles.module.css'
+import markdownStyles from "./markdown-styles.module.css";
 
 type Props = {
-  content: string
-}
+  content: string;
+};
 
 const PostBody = ({ content }: Props) => {
   return (
+    <div className="py-[32px]">
       <div
-        className={markdownStyles['markdown']}
+        className={markdownStyles["markdown"]}
         dangerouslySetInnerHTML={{ __html: content }}
       />
-  )
-}
+    </div>
+  );
+};
 
-export default PostBody
+export default PostBody;

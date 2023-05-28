@@ -1,20 +1,20 @@
-import Link from "next/link"
+import Link from "next/link";
 
 type Props = {
-  name: string
-  picture: string
-  html_url: string
-}
+  name: string;
+  picture: string;
+  html_url: string;
+};
 
 const Avatar = ({ name, picture, html_url }: Props) => {
   return (
-    <div className="flex items-center">
-      
-        <img src={picture} className="w-12 h-12 rounded-full mr-4" alt={name} />
-        <div className="text-l font-bold"><Link className="no-underline hover:underline" href={html_url}>by {name}</Link></div>
-      
-    </div>
-  )
-}
+    <Link className="no-underline hover:underline w-fit" href={html_url}>
+      <div className="flex items-center gap-2 ">
+        <img src={picture} className="w-8 h-8 rounded-full" alt={name} />
+        <div className="text-l font-medium">by {name}</div>
+      </div>
+    </Link>
+  );
+};
 
-export default Avatar
+export default Avatar;

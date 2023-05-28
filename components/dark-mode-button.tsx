@@ -1,33 +1,40 @@
-import Link from "next/link"
-import {useTheme} from "next-themes";
-import{SunIcon ,MoonIcon} from "@heroicons/react/solid";
-import {useState, useEffect} from "react";
+import Link from "next/link";
+import { useTheme } from "next-themes";
+import { SunIcon, MoonIcon } from "@heroicons/react/solid";
+import { useState, useEffect } from "react";
 
 const DarkModeButton = () => {
-
   const [mounted, setMounted] = useState(false);
-  useEffect(() =>{setMounted(true);},[])
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  const {systemTheme , theme, setTheme} = useTheme ();
+  const { systemTheme, theme, setTheme } = useTheme();
 
-    if (!mounted) return null;
-    const currentTheme = theme === "system" ? systemTheme : theme ;
+  if (!mounted) return null;
+  const currentTheme = theme === "system" ? systemTheme : theme;
 
-    if(currentTheme ==="dark"){
-        return (
-            <div className="border-2 dark:border-slate-500 border-slate-800 rounded-xl p-2 mt-5 md:mt-0 hover:bg-slate-400 ">
-              <SunIcon className="w-6 h-6 text-yellow-500" role="button" onClick={() => setTheme('light')} />
-             </div>
-        )
-    }
-    else {
-        return (
-            <div className="border-2 dark:border-gray-200 border-slate-500 rounded-xl p-2 mt-5 md:mt-0 hover:bg-slate-400">
-              <MoonIcon className="w-6 h-6 text-gray-900 " role="button" onClick={() => setTheme('dark')} />
-            </div>
-        )
-    }
-}
+  if (currentTheme === "dark") {
+    return (
+      <div
+        onClick={() => setTheme("light")}
+        role="button"
+        className="border-2 border-slate-200 hover:border-slate-400 dark:border-slate-700 dark:hover:border-slate-600 rounded-xl p-2  md:mt-0 hover:bg-slate-100 dark:hover:bg-slate-900 hover:ease-in duration-150"
+      >
+        <SunIcon className="w-6 h-6 text-yellow-500" />
+      </div>
+    );
+  } else {
+    return (
+      <div
+        onClick={() => setTheme("dark")}
+        role="button"
+        className="border-2  border-slate-200 hover:border-slate-400 dark:border-slate-700 dark:hover:border-slate-600 rounded-xl p-2  md:mt-0 hover:bg-slate-100 dark:hover:bg-slate-900 hover:ease-in duration-150"
+      >
+        <MoonIcon className="w-6 h-6 text-gray-900 " />
+      </div>
+    );
+  }
+};
 
-export default DarkModeButton
-
+export default DarkModeButton;

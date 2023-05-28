@@ -20,11 +20,11 @@
   @apply text-blue-700 underline
 }
 .markdown h2 {
-  @apply text-3xl mt-8 mb-4 leading-snug;
+  @apply text-3xl mt-10 mb-4 leading-snug;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-6 mb-4 leading-snug;
+  @apply text-2xl mt-8 mb-4 leading-snug;
 }
 
 .markdown a{
