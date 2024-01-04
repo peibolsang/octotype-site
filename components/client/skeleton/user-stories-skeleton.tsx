@@ -30,7 +30,7 @@ interface Props {
                 <PostPreviewSkeleton/>
                 <PostPreviewSkeleton/>
             </div>
-    </Section>
+          </Section>
         </Container>
       </section>
     )

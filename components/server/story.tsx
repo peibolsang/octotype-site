@@ -1,6 +1,8 @@
 import { getPost, getPostComments} from "@/lib/api";
 import markdownToHtml from "@/lib/markdownToHtml";
 import { StoryClient } from "@/components/client/story";
+import { HowItWorks } from "../client/how-it-works";
+import Container from "@/components/ui/container";
 
 interface StoryServerProps {
   user: string;
@@ -29,7 +31,17 @@ const StoryServer = async ({ user, slug }: StoryServerProps) => {
     const message = error instanceof Error ? error.message : "An unknown error occurred";
 
     // Handle error by returning an error component or a message
-    return <div>Error: {message}</div>;
+    return (
+      <>
+        <div className="bg-[#f4f1ea] bg-opacity-70 dark:bg-slate-900">
+            <Container compact>
+                <div className="flex flex-col py-[48px] gap-[24px]">
+                    Looks like you're lost. We couldn't find this {user}'s story.
+                </div>
+            </Container>
+        </div>
+      </>
+    )
   }
 };
 

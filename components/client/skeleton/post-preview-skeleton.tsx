@@ -8,7 +8,7 @@ const PostPreviewSkeleton = () => {
         <Card className="h-[350px] m-4" interactive>
             <CardHeader>
                 <Badge variant="outline" className="inline-flex items-center gap-2 w-fit py-1 px-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-[0.875rem] font-medium font-mono border-none mb-4">
-                     Loading ...
+                     ...
                 </Badge>
                 <div className="flex items-center">
                     <Skeleton className="bg-[#f4f1ea] dark:bg-slate-800 h-10 w-10 shrink-0 overflow-hidden rounded-full" />

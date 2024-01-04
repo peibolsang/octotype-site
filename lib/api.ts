@@ -257,4 +257,16 @@ export async function getAllUsers() {
   }
 }
 
+export async function hasRepo(username:string) {
+    // Make the API request
+    const response = await fetchGitHubAPI(`https://api.github.com/repos/${username}/${REPO_NAME}`);
+    const data = await response.json();
+
+    if (!data || !data.items ) {
+      return false
+    }
+
+    return true;  
+}
+
 
