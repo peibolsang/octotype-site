@@ -5,7 +5,7 @@ import { Skeleton } from "../../ui/skeleton";
 
 const PostPreviewSkeleton = () => {
     return (
-        <Card className="h-[350px] m-4" interactive>
+        <Card className="min-h-[350px] m-4" interactive>
             <CardHeader>
                 <Badge variant="outline" className="inline-flex items-center gap-2 w-fit py-1 px-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-[0.875rem] font-medium font-mono border-none mb-4">
                      ...
