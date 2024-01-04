@@ -34,7 +34,7 @@ const PostPreview = ({
     <Card className="h-[350px] m-4" interactive>
             <CardHeader>
               <Badge variant="outline" className="inline-flex items-center gap-2 w-fit py-1 px-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-[0.875rem] font-medium font-mono border-none mb-4">
-                <DateFormatter dateString={date} /> · {reading_time} minute
+                <DateFormatter dateString={date} /> · {reading_time} min
                 {reading_time === "1" ? "" : "s"} read
               </Badge>
               <Avatar
