@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: 'octotype',
     images: [
       {
-        url: '/cover.png', // Must be an absolute URL
+        url: 'https://octotype.app/cover.png', // Must be an absolute URL
         width: 800,
         height: 600,
         alt: 'octotype Home Page'
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: 'octotype - The content discovery platform for developers',
     description: 'The content discovery platform for developers',
     creator: '@peibolsang',
-    images: ['/cover.png'], // Must be an absolute URL
+    images: ['https://octotype.app/cover.png'], // Must be an absolute URL
   },
 }
 
