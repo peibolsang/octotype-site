@@ -48,7 +48,7 @@ const PostPreview = ({
               as={`/${author.name}/stories/${slug.number}`}
               href={`/${author.name}/stories/[slug]`}
               >
-              <h3 className="text-xl xl:text-2xl leading-snug font-bold">
+              <h3 className="hover:underline text-xl xl:text-2xl leading-snug font-bold">
                 {title}
               </h3>
             </Link>
