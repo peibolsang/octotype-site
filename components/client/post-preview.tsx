@@ -53,7 +53,7 @@ const PostPreview = ({
               </h3>
             </Link>
               <div
-                className={`${markdownStyles["markdown"]} line-clamp-2`}
+                className={`${markdownStyles["markdown"]} line-clamp-1 md:line-clamp-2 lg:line-clamp-2`}
                 dangerouslySetInnerHTML={{ __html: excerpt }}
               />
 
