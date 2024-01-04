@@ -5,7 +5,6 @@ import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import { UserStoriesSkeleton } from "@/components/client/skeleton/user-stories-skeleton";
 import { Suspense } from "react";
 
-
 export default function Page({params}: {params: {user: string}}) {
  
   const finalUser = params.user

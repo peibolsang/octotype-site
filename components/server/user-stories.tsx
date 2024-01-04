@@ -3,9 +3,9 @@ import { UserFeaturedStoryClient } from "@/components/client/user-featured-story
 import Container from "@/components/ui/container";
 import UserMoreStoriesClient from "@/components/client/user-more-stories";
 import { HowItWorks } from "../client/how-it-works";
-import { CMS_NAME } from "@/lib/constants";
 import Section from "@/components/ui/section";
 import { PostPreviewSkeleton } from "../client/skeleton/post-preview-skeleton";
+import { revalidatePath } from 'next/cache'
 
 interface UserStoriesServerProps {
   user: string;
@@ -27,6 +27,9 @@ const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
     
       const featuredPost = lastPosts?.[0] ?? null;
       const morePosts = lastPosts?.slice(1) ?? [];
+
+      revalidatePath('/[user]', 'page')
+
       return (
         <>
           {

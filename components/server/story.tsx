@@ -1,8 +1,8 @@
 import { getPost, getPostComments} from "@/lib/api";
 import markdownToHtml from "@/lib/markdownToHtml";
 import { StoryClient } from "@/components/client/story";
-import { HowItWorks } from "../client/how-it-works";
 import Container from "@/components/ui/container";
+import { revalidatePath } from "next/cache";
 
 interface StoryServerProps {
   user: string;
@@ -19,6 +19,9 @@ const StoryServer = async ({ user, slug }: StoryServerProps) => {
 
     const commentsdata = await getPostComments(user, slug);
     const content = await markdownToHtml(post.content || "");
+
+
+    revalidatePath('/(user)/stories/[slug]', 'page')
 
     // Return StoryClient only if post is defined
     return (
