@@ -8,7 +8,7 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://octotype.app'),
+  //metadataBase: new URL('https://octotype.app'),
   title: 'octotype',
   description: 'The content discovery platform for developers',
   openGraph: {
