@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import Footer from "@/components/client/footer";
 import Meta from "@/components/ui/meta";
 import ThemeClient from '@/components/client/theme';
@@ -23,6 +24,7 @@ export default function RootLayout({
           <Footer />
         </ThemeClient>
         <Analytics />
+        <SpeedInsights/>
       </body>
     </html>
   )
