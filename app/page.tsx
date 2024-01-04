@@ -22,7 +22,7 @@ export default function Page() {
         <Suspense fallback={<AllStoriesSkeleton/>} >
           <AllStoriesServer />
         </Suspense>
-        <HowItWorks />
+        <HowItWorks username={'[user]'} />
     </div>
   );
 }
