@@ -1,4 +1,4 @@
-export const MAX_WORDS = 50;
+export const MAX_WORDS = 70;
 export const REPO_NAME = 'octotype'
 export const LABEL = 'published'
 export const EXAMPLE_PATH = 'blog-starter'

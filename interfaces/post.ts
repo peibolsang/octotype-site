@@ -1,6 +1,6 @@
-import type Author from '../interfaces/author'
-import type Comment from '../interfaces/comment'
-import type Reactions from '../interfaces/reactions'
+import type Author from '@/interfaces/author'
+import type Comment from '@/interfaces/comment'
+import type Reactions from '@/interfaces/reactions'
 
 type PostType = {
   slug: {
