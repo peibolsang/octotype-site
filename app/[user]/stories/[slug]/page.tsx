@@ -20,9 +20,10 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || []
  
   return {
+    metadataBase: new URL('https://octotype.app'),
     title: `octotype - ${params.user}`,
-  description: 'The content discovery platform for developers',
-  openGraph: {
+    description: 'The content discovery platform for developers',
+    openGraph: {
     title: `octotype - ${params.user}`,
     description: 'The content discovery platform for developers',
     url: 'https://octotype.app',

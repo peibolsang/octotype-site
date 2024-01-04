@@ -8,6 +8,7 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://octotype.app'),
   title: 'octotype',
   description: 'The content discovery platform for developers',
   openGraph: {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     siteName: 'octotype',
     images: [
       {
-        url: 'https://octotype.app/cover.png', // Must be an absolute URL
+        url: '/cover.png', // Must be an absolute URL
         width: 800,
         height: 600,
         alt: 'octotype Home Page'
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     title: 'octotype - The content discovery platform for developers',
     description: 'The content discovery platform for developers',
     creator: '@peibolsang',
-    images: ['https://octotype.app/cover.png'], // Must be an absolute URL
+    images: ['/cover.png'], // Must be an absolute URL
   },
 }
 
