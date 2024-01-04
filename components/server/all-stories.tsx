@@ -15,7 +15,7 @@ const AllStoriesServer = async () => {
       return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
 
-    revalidatePath('/', 'page')
+    //evalidatePath('/', 'page')
   
     return <LatestStoriesClient lastPosts={lastPosts} />;
   };

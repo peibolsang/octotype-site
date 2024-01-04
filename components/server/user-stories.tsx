@@ -61,7 +61,7 @@ const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
       const featuredPost = lastPosts?.[0] ?? null;
       const morePosts = lastPosts?.slice(1) ?? [];
 
-      revalidatePath('/[user]', 'page')
+      //revalidatePath('/[user]', 'page')
 
       return (
         <>
