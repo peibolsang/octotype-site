@@ -6,27 +6,39 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-6;
+  @apply my-5;
 }
 
 .markdown pre {
-  @apply overflow-x-auto sm:overflow-scroll
+  @apply text-base overflow-x-auto sm:overflow-scroll bg-slate-300 p-2 text-black rounded-md
 }
 
+.markdown code {
+  @apply text-base overflow-x-auto sm:overflow-scroll 
+}
 .markdown li {
   @apply list-disc ml-10
 }
 .markdown a {
   @apply text-blue-700 underline
 }
+
+.markdown h1 {
+  @apply text-4xl mt-10 mb-4 leading-snug font-semibold
+}
+
 .markdown h2 {
-  @apply text-3xl mt-10 mb-4 leading-snug;
+  @apply text-3xl mt-10 mb-4 leading-snug font-semibold
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply text-2xl mt-8 mb-4 leading-snug
 }
 
 .markdown a{
   @apply text-blue-400 dark:text-white
+}
+
+.markdown blockquote p{ 
+  @apply m-0 border-l-2 border-l-slate-200 pl-8 italic
 }
