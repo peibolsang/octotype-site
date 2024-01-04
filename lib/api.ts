@@ -25,8 +25,7 @@ export async function fetchGitHubAPI(url: string) {
 
   const params = {
     method: 'GET',
-    headers: headers,
-    //next: { revalidate: 120 } 
+    headers: headers
   };
 
   const response = await fetch(url, params);
@@ -205,26 +204,19 @@ export async function getCommentFromGitHubIssue(item: GitHubIssue) {
 }
 
 export async function getPostComments(username: string, number: string) {
-  try {
     // Make the API request
     const response = await fetchGitHubAPI(`https://api.github.com/repos/${username}/${REPO_NAME}/issues/${number}/comments`);
     const data = await response.json();
 
     if (!Array.isArray(data)) {
-      throw new Error('Invalid API response');
+      return []
     }
 
     // We map Issue comments into Blog comments
     const comments = Promise.all(
       data.map(async (item) => await getCommentFromGitHubIssue(item))
     );
-
     return comments;
-  } catch (error) {
-    console.log(error);
-    // Handle the error or rethrow it
-    throw error;
-  }
 }
 
 
@@ -234,28 +226,20 @@ export async function getPostComments(username: string, number: string) {
 */
 
 export async function getAllUsers() {
-  try {
     // Make the API request
     const response = await fetchGitHubAPI(`https://api.github.com/search/repositories?q=${REPO_NAME}`);
     const data = await response.json();
 
     if (!data || !data.items ) {
-      throw new Error('Invalid API response');
+      return []
     }
-
     // We map Issue comments into Blog comments
     const users = Promise.all(
       data.items
         .filter((item: GitHubIssue) => item.name === REPO_NAME)
         .map((item: GitHubIssue) => item.owner.login)
     );
-
     return users;
-  } catch (error) {
-    console.log(error);
-    // Handle the error or rethrow it
-    throw error;
-  }
 }
 
 export async function hasRepo(username:string) {
@@ -269,5 +253,3 @@ export async function hasRepo(username:string) {
 
     return true;  
 }
-
-
