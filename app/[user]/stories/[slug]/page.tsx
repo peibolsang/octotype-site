@@ -2,10 +2,11 @@ import { StoryServer } from "@/components/server/story";
 import Head from "next/head";
 import MainHeader from "@/components/client/main-header";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
+import { StorySkeleton } from "@/components/client/skeleton/story-skeleton";
+import { Suspense } from "react";
 
 
 export default function Page({params}: {params: {user: string, slug: string}}) {
- 
   return (
     <div className="dark:bg-slate-800 dark:text-white">
         <Head>
@@ -16,7 +17,9 @@ export default function Page({params}: {params: {user: string, slug: string}}) {
           <meta name="twitter:title" content={params.user} />
         </Head>
         <MainHeader />
-        <StoryServer user={params.user} slug={params.slug}/>
+        <Suspense fallback={<StorySkeleton username={params.user}/>}>
+          <StoryServer user={params.user} slug={params.slug}/>
+        </Suspense>
     </div>
   );
 }

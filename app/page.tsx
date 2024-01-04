@@ -3,6 +3,8 @@ import MainIntro from "@/components/client/main-intro"
 import { HowItWorks } from "@/components/client/how-it-works";
 import { AllStoriesServer } from "@/components/server/all-stories";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
+import { AllStoriesSkeleton } from "@/components/client/skeleton/all-stories-skeleton";
+import { Suspense } from "react";
 
 export default function Page() {
   return (
@@ -17,7 +19,9 @@ export default function Page() {
           />
         </Head>
         <MainIntro />
-        <AllStoriesServer />
+        <Suspense fallback={<AllStoriesSkeleton/>} >
+          <AllStoriesServer />
+        </Suspense>
         <HowItWorks />
     </div>
   );

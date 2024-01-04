@@ -2,6 +2,8 @@ import { UserStoriesServer } from "@/components/server/user-stories";
 import Head from "next/head";
 import MainHeader from "@/components/client/main-header";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
+import { UserStoriesSkeleton } from "@/components/client/skeleton/user-stories-skeleton";
+import { Suspense } from "react";
 
 
 export default function Page({params}: {params: {user: string}}) {
@@ -17,7 +19,9 @@ export default function Page({params}: {params: {user: string}}) {
           <meta name="twitter:title" content={params.user} />
         </Head>
         <MainHeader />
-        <UserStoriesServer user={finalUser}/>
+        <Suspense fallback={<UserStoriesSkeleton username={params.user}/>}>
+          <UserStoriesServer user={finalUser}/>
+        </Suspense>
     </div>
   );
 }
