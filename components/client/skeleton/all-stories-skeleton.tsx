@@ -9,11 +9,8 @@ import {
   } from "@/components/ui/carousel"
 import Container from "@/components/ui/container";
 import Section from "@/components/ui/section";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { useEffect } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "../../ui/skeleton";
 import { PostPreviewSkeleton } from "./post-preview-skeleton";
 
 const AllStoriesSkeleton = () => {

@@ -1,7 +1,6 @@
 'use client'
 import Head from "next/head";
 import Container from "@/components/ui/container";
-import PostBody from "@/components/client/post-body";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 

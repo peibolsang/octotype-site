@@ -24,8 +24,8 @@ const PostComments = ({ comments, issuenumber, username }: Props) => {
         <div className="grid grid-cols-1 gap-y-8 mb-6">
           {comments.length == 0 || comments[0].content ? (
             comments.map((comment) => (
-              <div className="border-2 border-color-gray rounded-xl">
-                <div className="flex items-center dark:bg-slate-400 dark:text-white bg-gray-100 rounded-t-xl p-3">
+              <div className="border-2 border-[#f4f1ea] dark:border-slate-500  rounded-xl">
+                <div className="flex items-center bg-[#f4f1ea] dark:bg-slate-500 dark:text-white rounded-t-[4px] p-3">
                   <Avatar
                     key={comment.date}
                     name={comment.author.name}

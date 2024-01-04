@@ -3,7 +3,6 @@ import markdownToHtml from "@/lib/markdownToHtml";
 import { StoryClient } from "@/components/client/story";
 import Container from "@/components/ui/container";
 import { revalidatePath } from "next/cache";
-import { unstable_noStore } from "next/cache";
 
 interface StoryServerProps {
   user: string;
