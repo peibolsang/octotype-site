@@ -7,11 +7,6 @@ import { Inter } from 'next/font/google';
 
 const font=Inter({subsets: ['latin']})
 
-export const metadata: Metadata = {
-  title: 'octotype',
-  description: 'The content discovery platform for developers',
-}
-
 export default function RootLayout({
   children,
 }: {

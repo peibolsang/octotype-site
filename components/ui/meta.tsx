@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '@/lib/constants'
+import { HOME_OG_IMAGE_URL } from '@/lib/constants'
 
 const Meta = () => {
   return (
@@ -28,16 +28,7 @@ const Meta = () => {
         color="#000000"
       />
       <link rel="shortcut icon" href="/favicon/favicon.ico" />
-      <meta name="msapplication-TileColor" content="#000000" />
-      <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-      <meta name="theme-color" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta
-        name="description"
-        content={`octotype - Content discovery for developers using GitHub issues as CMS`}
-      />
-      <meta property="og:image" content={HOME_OG_IMAGE_URL} />
-      <meta property="og:description" content="octotype - Content discovery for developers using GitHub issues as CMS"/>
     </Head>
   )
 }
