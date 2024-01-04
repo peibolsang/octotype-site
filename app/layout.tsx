@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
-import { GeistSans } from "geist/font/sans";
 import Footer from "@/components/client/footer";
 import Meta from "@/components/ui/meta";
 import ThemeClient from '@/components/client/theme';
 import './globals.css'
+import { Inter } from 'next/font/google';
+
+const font=Inter({subsets: ['latin']})
 
 export const metadata: Metadata = {
   title: 'octotype',
@@ -17,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.className} bg-[#f4f1ea] bg-opacity-20 dark:bg-slate-800 dark:text-white`}>
+      <body className={`${font.className} bg-[#f4f1ea] bg-opacity-20 dark:bg-slate-800 dark:text-white`}>
         <ThemeClient>
           <Meta />
             <div className="min-h-screen">
