@@ -21,7 +21,7 @@ const Intro = ({ username, featuredPost }: Props) => {
           </h4>
         </div>
         <Section>
-          <div className="gap-[16px]">
+          <div className="flex flex-col lg:flex-row gap-[16px] w-full">
             {featuredPost}
           </div>
         </Section>

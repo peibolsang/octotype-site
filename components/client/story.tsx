@@ -6,13 +6,13 @@ import Container from "@/components/ui/container";
 import PostBody from "@/components/client/post-body";
 import PostComments from "@/components/client/post-comments";
 import CommentType from "@/interfaces/comment";
-import { Metadata } from "next";
 
 interface StoryProps {
   post: PostType; // Use the Post interface here
   content: string;
   comments: CommentType[]
 }
+
 
   const StoryClient: React.FC<StoryProps> = ({ post, content, comments }) => {
     return(
@@ -53,7 +53,3 @@ interface StoryProps {
   }
 
   export {StoryClient};
-
-
-
-
