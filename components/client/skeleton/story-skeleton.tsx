@@ -68,7 +68,3 @@ const StorySkeleton: React.FC<Props> = ({ username }) => {
   }
 
   export {StorySkeleton};
-
-
-
-

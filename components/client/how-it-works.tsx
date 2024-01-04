@@ -9,9 +9,9 @@ const steps = new Map([
       "Step 1",
       {
         title: "Step 1",
-        content: (username: string) =>(
+        content: (
           <React.Fragment>
-            Create a GitHub repo <Code>{username}/octotype</Code>
+            Create a GitHub repo <Code>[user]/octotype</Code>
           </React.Fragment>
         ),
       },
@@ -20,7 +20,7 @@ const steps = new Map([
       "Step 2",
       {
         title: "Step 2",
-        content: (username: string) => (
+        content: (
           <React.Fragment>
             Create an issue and apply the <Code>published</Code> label
           </React.Fragment>
@@ -31,20 +31,16 @@ const steps = new Map([
       "Step 3",
       {
         title: "Step 3",
-        content: (username: string) => (
+        content: (
           <React.Fragment>
-            Share your story from <Code>octotype.app/{username}</Code>
+            Share your story from <Code>octotype.app/[user]</Code>
           </React.Fragment>
         ),
       },
     ],
   ]);
 
-  interface Props {
-    username: string
-  }
-
-  const HowItWorks: React.FC<Props> = ({ username }) => {
+const HowItWorks = () => {
     return(
       <Container>
       <Section
@@ -62,7 +58,7 @@ const steps = new Map([
                   {value.title}
                 </div>
                 <div className="dark:text-white md:text-1xl font-medium text-slate-600 leading-7">
-                  {value.content(username)}{" "}
+                  {value.content}{" "}
                 </div>
               </div>
             </Card>
