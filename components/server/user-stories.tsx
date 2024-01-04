@@ -59,14 +59,6 @@ const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
                 </Section>
               </Container>
             </section>
-            <Container>
-                <Section title="This could be your stories!">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
-                      <PostPreviewSkeleton/>
-                      <PostPreviewSkeleton/>
-                  </div>
-                </Section>
-              </Container>
           </>
           }
         </>
