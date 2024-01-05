@@ -31,7 +31,7 @@ const StoryServer = async ({ user, slug }: StoryServerProps) => {
     const content = await markdownToHtml(post.content || "");
 
 
-    revalidatePath('/[user]/stories/[slug]', 'page')
+    //revalidatePath('/[user]/stories/[slug]', 'page')
 
     // Return StoryClient only if post is defined
     return (

@@ -26,9 +26,9 @@ export async function fetchGitHubAPI(url: string) {
   const params = {
     method: 'GET',
     headers: headers,
-    //next:{
-    //  revalidate: 0
-    //}
+    next:{
+      revalidate: 300
+    }
   };
 
   const response = await fetch(url, params);
