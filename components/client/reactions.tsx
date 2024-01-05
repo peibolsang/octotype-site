@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type Reactions from '@/interfaces/reactions'
 import type Icons from '@/interfaces/icons'
 import { REPO_NAME } from '@/lib/constants'
+import { Badge } from '@/components/ui/badge'
 
 type Props = {
   reactions: Reactions,
@@ -30,22 +31,22 @@ const Reactions = ({ reactions,issuenumber,username }: Props) => {
         if (value.toString() !== "0") {
           return (
             <div className="mb-5 flex items-center">
-              <div className="mr-3 bg-blue-100 p-1 border-2 border-blue-300 rounded-full">
+              <Badge className="mr-3 bg-[#9aae8e] bg-opacity-70 text-white p-1 border-2 border-[#9aae8e] rounded-full hover:bg-bg-[#9aae8e] hover:bg-opacity-100 dark:bg-[#818CF8] dark:bg-opacity-50 dark:hover:bg-opacity-100 dark:border-[#818CF8]">
                 <Link href={href}>
-                  <span className="text-l mr-2 text-blue-500 text-sm" dangerouslySetInnerHTML={{ __html: `${icons[key]} ${value}` }}></span>
+                  <span className="text-l mr-2  text-sm" dangerouslySetInnerHTML={{ __html: `${icons[key]} ${value}` }}></span>
                 </Link>
-              </div>
+              </Badge>
             </div>
           );
         }
         return null;
       })}
       <div className="mb-5 flex items-center">
-        <div className="mr-3 dark:bg-slate-400 bg-gray-100 p-1 border-2 border-gray-300 rounded-full">
+        <Badge className="mr-3 hover:bg-slate-200 dark:bg-slate-400 bg-gray-100 p-1 border-2 border-gray-300 rounded-full">
           <Link href={href}>
-              <span className="text-l mr-2 text-sm" dangerouslySetInnerHTML={{ __html: `${icons.new} +` }}></span>
+              <span className="text-l mr-2 text-sm text-black" dangerouslySetInnerHTML={{ __html: `${icons.new} +` }}></span>
           </Link>
-        </div>
+        </Badge>
       </div>
     </div>
   )
