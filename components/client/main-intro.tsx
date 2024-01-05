@@ -8,7 +8,6 @@ const MainIntro = () => {
   const textarray = ["developers.", "the world."];
   return (
     <>
-      <MainHeader />
       <section className="flex-col md:flex-row flex items-center md:justify-between align-middle bg-[#f4f1ea] bg-opacity-70 dark:bg-slate-900  py-16 xl:py-32  md:py-24">
         <Container>
           <div className="flex flex-col gap-[32px] xl:gap-[40px] xl:pr-[33%]">

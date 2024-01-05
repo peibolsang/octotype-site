@@ -24,7 +24,6 @@ export default function Page({params}: Props) {
   const finalUser = params.user
   return (
     <div className="dark:bg-slate-800 dark:text-white">
-        <MainHeader />
         <Suspense fallback={<UserStoriesSkeleton username={params.user}/>}>
           <UserStoriesServer user={finalUser}/>
         </Suspense>

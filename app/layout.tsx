@@ -5,6 +5,7 @@ import Meta from "@/components/ui/meta";
 import ThemeClient from '@/components/client/theme';
 import './globals.css'
 import { Inter } from 'next/font/google';
+import MainHeader from '@/components/client/main-header';
 
 const font=Inter({subsets: ['latin']})
 
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body className={`${font.className} bg-[#f4f1ea] bg-opacity-20 dark:bg-slate-800 dark:text-white`}>
         <ThemeClient>
           <Meta />
+           <MainHeader />
             <div className="min-h-screen">
               <main>{children}</main>
             </div>
