@@ -81,6 +81,7 @@ import { DoubleArrowRightIcon, DoubleArrowLeftIcon } from "@radix-ui/react-icons
                             comments_count={post.comments_count}
                             reactions_count={post.reactions_count}
                             reading_time={post.reading_time}
+                            labels={post.labels}
                           />
                         </CarouselItem>
                       ))}

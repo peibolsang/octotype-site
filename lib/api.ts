@@ -4,10 +4,11 @@ import type Reactions from '@/interfaces/reactions'
 import type CommentType from '@/interfaces/comment';
 import { MAX_WORDS } from './constants'
 import { REPO_NAME } from './constants'
-import { LABEL } from './constants'
+import { LABEL } from '@/lib/constants'
 import type GitHubIssue from '@/interfaces/githubissue';
 import {HOME_OG_IMAGE_URL} from './constants'
 import markdownToHtml from '@/lib/markdownToHtml'
+import LabelType from '@/interfaces/label';
 
 
 /* 
@@ -71,6 +72,13 @@ export async function getPostFromGitHubIssue(item: GitHubIssue) {
     html_url: item.user && "/" + item.user.login
   }
 
+  const issueLabels: LabelType[] = item.labels
+  .filter(label => label.name !== LABEL) // Filter out labels with name "published"
+  .map(label => ({
+    color: label.color,
+    name: label.name
+  }));
+
   const issuereactions: Reactions = {
     plusone: item.reactions && item.reactions['+1'],
     minusone: item.reactions && item.reactions['-1'],
@@ -102,7 +110,8 @@ export async function getPostFromGitHubIssue(item: GitHubIssue) {
     reactions: issuereactions,
     comments: [],
     reading_time: calculateReadingTime(item.body),
-    html_url: item.html_url
+    html_url: item.html_url,
+    labels: issueLabels
   }
   return post;
 }

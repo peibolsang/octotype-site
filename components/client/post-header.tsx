@@ -2,30 +2,29 @@ import Avatar from "@/components/ui/avatar";
 import DateFormatter from "@/components/ui/date-formatter";
 import PostTitle from "@/components/client/post-title";
 import type Author from "@/interfaces/author";
-import Reactions from "@/interfaces/reactions";
 import Link from "next/link";
 import Container from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
+import LabelType from "@/interfaces/label";
+import PostLabels from "@/components/client/post-labels";
 
 
 type Props = {
   title: string;
   date: string;
   author: Author;
-  issuenumber: string;
-  reactions: Reactions;
   reading_time: string;
   html_url: string;
+  labels: LabelType[]
 };
 
 const PostHeader = ({
   title,
   date,
   author,
-  issuenumber,
-  reactions,
   reading_time,
   html_url,
+  labels
 }: Props) => {
   return (
     <div className="bg-[#f4f1ea] bg-opacity-70 dark:bg-slate-900">
@@ -42,7 +41,6 @@ const PostHeader = ({
               picture={author.picture}
               html_url={author.html_url}
             />
-
             <div className="text-l text-gray-400 ">
               Originally published as a{" "}
               <Link className="text-blue-400 underline" href={html_url}>
@@ -50,6 +48,7 @@ const PostHeader = ({
               </Link>{" "}
             </div>
           </div>
+          <PostLabels labels={labels} />
         </div>
       </Container>
     </div>

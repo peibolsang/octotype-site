@@ -31,10 +31,9 @@ interface StoryProps {
                 title={post.title}
                 date={post.date}
                 author={post.author}
-                issuenumber={post.slug.number}
-                reactions={post.reactions}
                 reading_time={post.reading_time}
                 html_url={post.html_url}
+                labels={post.labels}
             />
         <Container compact>
           <PostBody content={content} />

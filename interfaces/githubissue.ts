@@ -27,6 +27,15 @@ type GitHubIssue = {
     comments: string;
     name:string;
     id:string;
+    labels: Array<{
+      id: number
+      node_id: string;
+      url: string;
+      name: string;
+      color: string;
+      default: boolean;
+      description: string;
+    }>
   };
 
   export default GitHubIssue;

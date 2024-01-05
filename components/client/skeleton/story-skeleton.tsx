@@ -22,7 +22,7 @@ const StorySkeleton: React.FC<Props> = ({ username }) => {
             <Container compact>
                 <div className="flex flex-col py-[48px] gap-[24px]">
                     <Badge variant="outline" className="inline-flex items-center gap-2 w-fit py-1 px-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-[0.875rem] font-medium font-mono border-none mb-4">
-                        Loading ...
+                        ...
                     </Badge>
                     <h1 className={`text-center md:text-left lg:text-left text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-tight md:leading-none mb-4`}>
                         <Skeleton className="bg-black bg-opacity-20 dark:bg-slate-800 ml-2 mb-2 w-full h-[50px] rounded-lg" />
