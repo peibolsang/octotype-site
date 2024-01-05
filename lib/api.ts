@@ -27,7 +27,7 @@ export async function fetchGitHubAPI(url: string) {
     method: 'GET',
     headers: headers,
     next:{
-      revalidate: 300 // 0 for PPR; 300 for non-PPR.
+      revalidate: 0 // 0 for PPR; 300 for non-PPR.
     }
   };
 
@@ -135,6 +135,7 @@ export async function getPost(username: string,number: string){
   }
   catch (error){
     console.log(error)
+    throw error
   }
 }
 
@@ -161,6 +162,7 @@ export async function getAllPosts(username: string) {
     return posts;
   } catch (error) {
     console.log(error);
+    throw error
   }
 }
 
