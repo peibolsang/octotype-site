@@ -25,7 +25,7 @@ const icons: Icons = {
 const Reactions = ({ reactions,issuenumber,username }: Props) => {
   const href=`https://github.com/${username}/${REPO_NAME}/issues/${issuenumber}#issuecomment-new`
   return (
-    <>
+    <div className="flex items-center">
       {Object.entries(reactions).map(([key, value]) => {
         if (value.toString() !== "0") {
           return (
@@ -47,7 +47,7 @@ const Reactions = ({ reactions,issuenumber,username }: Props) => {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

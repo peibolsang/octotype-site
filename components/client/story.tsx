@@ -6,6 +6,7 @@ import Container from "@/components/ui/container";
 import PostBody from "@/components/client/post-body";
 import PostComments from "@/components/client/post-comments";
 import CommentType from "@/interfaces/comment";
+import Reactions from "./reactions";
 
 interface StoryProps {
   post: PostType; // Use the Post interface here
@@ -37,6 +38,7 @@ interface StoryProps {
             />
         <Container compact>
           <PostBody content={content} />
+          <Reactions reactions={post.reactions} issuenumber={post.slug.number} username={post.author.name}/>
         </Container>
       </article>
       <div className="border-t-2 border-slate-200 pt-5">
