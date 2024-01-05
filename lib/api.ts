@@ -27,7 +27,7 @@ export async function fetchGitHubAPI(url: string) {
     method: 'GET',
     headers: headers,
     next:{
-      revalidate: 0 // 0 for PPR; 300 for non-PPR.
+      revalidate: 300 // 0 for PPR; 300 for non-PPR.
     }
   };
 
