@@ -1,18 +1,11 @@
 'use client'
-import { useState } from "react";
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    ResponsiveCarouselButtons,
-    CarouselApi
-  } from "@/components/ui/carousel"
+import { useState, useEffect } from "react";
+import {Carousel, CarouselContent, CarouselItem, ResponsiveCarouselButtons, CarouselApi} from "@/components/ui/carousel"
 import Container from "@/components/ui/container";
 import Section from "@/components/ui/section";
 import PostPreview from "@/components/client/post-preview";
 import PostType from "@/interfaces/post";
 import { Progress } from "@/components/ui/progress";
-import { useEffect } from "react";
 import { DoubleArrowRightIcon, DoubleArrowLeftIcon } from "@radix-ui/react-icons";
 
 
@@ -32,7 +25,8 @@ import { DoubleArrowRightIcon, DoubleArrowLeftIcon } from "@radix-ui/react-icons
         return;
       }
      
-      setNumberOfCards(api.slideNodes().length-1)
+      setNumberOfCards(api.slideNodes().length)
+
       const handleSelect = (api: CarouselApi) => {
         const slideProgress = Math.round(((api.selectedScrollSnap())/(api.slideNodes().length-1)) * 100)
         setCurrentCard(api.selectedScrollSnap()+1)

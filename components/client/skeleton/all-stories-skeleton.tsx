@@ -26,7 +26,8 @@ const AllStoriesSkeleton = () => {
       return;
     }
    
-    setNumberOfCards(api.slideNodes().length-1)
+    setNumberOfCards(api.slideNodes().length)
+
     const handleSelect = (api: CarouselApi) => {
       const slideProgress = Math.round(((api.selectedScrollSnap())/(api.slideNodes().length-1)) * 100)
       setCurrentCard(api.selectedScrollSnap()+1)
