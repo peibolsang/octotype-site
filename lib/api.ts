@@ -26,9 +26,9 @@ export async function fetchGitHubAPI(url: string) {
   const params = {
     method: 'GET',
     headers: headers,
-    //next:{
-    //  revalidate: 300 // fresh data every 5 mins. We don't need to server fresh data in every call. Users can wait 5 mins to see their posts in the platform
-    //}
+    next:{
+      revalidate: 0 // 0 for PPR; 300 for non-PPR.
+    }
   };
 
   const response = await fetch(url, params);
