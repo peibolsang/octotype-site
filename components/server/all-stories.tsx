@@ -1,5 +1,5 @@
 import { getAllPosts, getAllUsers, getPost } from "@/lib/api";
-import {LatestStoriesClient} from "@/components/client/all-stories";
+import {AllStoriesClient} from "@/components/client/all-stories";
 import { revalidatePath } from 'next/cache'
 
 const AllStoriesServer = async () => {
@@ -17,7 +17,7 @@ const AllStoriesServer = async () => {
 
     //revalidatePath('/', 'page')
   
-    return <LatestStoriesClient lastPosts={lastPosts} />;
+    return <AllStoriesClient lastPosts={lastPosts} />;
   };
 
   export {AllStoriesServer}

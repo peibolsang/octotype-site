@@ -13,14 +13,14 @@ import PostPreview from "@/components/client/post-preview";
 import PostType from "@/interfaces/post";
 import { Progress } from "@/components/ui/progress";
 import { useEffect } from "react";
-import { DoubleArrowRightIcon } from "@radix-ui/react-icons";
+import { DoubleArrowRightIcon, DoubleArrowLeftIcon } from "@radix-ui/react-icons";
 
 
-  interface LatestStoriesProps {
+  interface AllStoriesProps {
     lastPosts: PostType[]; // Use the Post interface here
   }
 
-  const LatestStoriesClient: React.FC<LatestStoriesProps> = ({ lastPosts }) => {
+  const AllStoriesClient: React.FC<AllStoriesProps> = ({ lastPosts }) => {
 
     const [api, setApi] = useState<CarouselApi>()
     const [progress, setProgress] = useState(0)
@@ -57,9 +57,14 @@ import { DoubleArrowRightIcon } from "@radix-ui/react-icons";
               <div>
                 <div className="flex flex-col items-center justify-center">
                     <Progress className="w-32 mb-4 bg-stone-300 bg-opacity-30 h-[6px]" value={progress} indicatorColor="bg-stone-200"/>
-                    <div className="text-sm flex items-center justify-center block md:hideen lg:hidden">
-                      {currentCard}/{numberOfCards}
-                      <DoubleArrowRightIcon className="ml-1"/>
+                    <div className="text-sm flex items-center justify-center block md:hidden lg:hidden">
+                      {
+                        <>
+                            <DoubleArrowLeftIcon className={currentCard>1? `visible mr-1`:`invisible mr-1`}/>
+                            {currentCard}/{numberOfCards}
+                            <DoubleArrowRightIcon className="ml-1"/>
+                        </>
+                      }
                     </div>
                 </div>
                   <Carousel
@@ -96,4 +101,4 @@ import { DoubleArrowRightIcon } from "@radix-ui/react-icons";
       );
 }
 
-export {LatestStoriesClient};
+export {AllStoriesClient};
