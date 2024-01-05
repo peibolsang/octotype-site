@@ -25,6 +25,7 @@ interface UserFeaturedStoryProps {
                     comments_count={featuredPost?.comments_count}
                     reactions_count={featuredPost?.reactions_count}
                     reading_time={featuredPost?.reading_time}
+                    labels={featuredPost?.labels}
                 />
                 ) : (
                 <div>{featuredPost?.toString()}</div>

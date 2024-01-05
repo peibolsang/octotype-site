@@ -21,6 +21,7 @@ const UserMoreStoriesClient = ({ posts }: Props) => {
             comments_count={post.comments_count}
             reactions_count={post.reactions_count}
             reading_time={post.reading_time}
+            labels={post.labels}
           />
         ))}
       </div>

@@ -1,6 +1,7 @@
 import type Author from '@/interfaces/author'
 import type Comment from '@/interfaces/comment'
 import type Reactions from '@/interfaces/reactions'
+import LabelType from './label'
 
 type PostType = {
   slug: {
@@ -21,6 +22,7 @@ type PostType = {
   comments: Array<Comment>
   reading_time: string
   html_url: string
+  labels: Array<LabelType>
 }
 
 export default PostType

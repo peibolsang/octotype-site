@@ -5,6 +5,8 @@ import {Badge} from "@/components/ui/badge"
 import {Card, CardHeader, CardContent} from "@/components/ui/card";
 import type Author from "@/interfaces/author";
 import markdownStyles from "@/components/ui//markdown-styles.module.css";
+import LabelType from "@/interfaces/label";
+import PostLabels from "@/components/client/post-labels";
 
 type Props = {
   title: string;
@@ -18,6 +20,7 @@ type Props = {
   comments_count: string;
   reactions_count: string;
   reading_time: string;
+  labels:LabelType[]
 };
 
 const PostPreview = ({
@@ -29,6 +32,7 @@ const PostPreview = ({
   comments_count,
   reactions_count,
   reading_time,
+  labels,
 }: Props) => {
   return (
     <Card className="min-h-[350px] m-4" interactive>
@@ -53,10 +57,10 @@ const PostPreview = ({
               </h3>
             </Link>
               <div
-                className={`${markdownStyles["markdown"]} line-clamp-1 md:line-clamp-2 lg:line-clamp-2`}
+                className={`${markdownStyles["markdown"]} hidden md:line-clamp-2 lg:line-clamp-2`}
                 dangerouslySetInnerHTML={{ __html: excerpt }}
               />
-
+          <PostLabels labels={labels}/>
           <div className="flex items-center mt-4">
             <span className="mr-3">
               <span className="text-l mr-1">&#x1F4AC;</span>
