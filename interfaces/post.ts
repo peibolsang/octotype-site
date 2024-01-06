@@ -23,6 +23,7 @@ type PostType = {
   reading_time: string
   html_url: string
   labels: Array<LabelType>
+  events_url: string
 }
 
 export default PostType

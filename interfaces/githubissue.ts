@@ -35,7 +35,8 @@ type GitHubIssue = {
       color: string;
       default: boolean;
       description: string;
-    }>
+    }>;
+    events_url: string
   };
 
   export default GitHubIssue;

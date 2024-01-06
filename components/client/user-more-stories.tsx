@@ -4,11 +4,12 @@ import Section from "@/components/ui//section";
 
 type Props = {
   posts: Post[];
+  user: string
 };
 
-const UserMoreStoriesClient = ({ posts }: Props) => {
+const UserMoreStoriesClient = ({ posts, user }: Props) => {
   return (
-    <Section title="More stories">
+    <Section title={`All stories`}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
         {posts.map((post) => (
           <PostPreview

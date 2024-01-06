@@ -1,6 +1,4 @@
 import { UserStoriesServer } from "@/components/server/user-stories";
-import MainHeader from "@/components/client/main-header";
-
 import { UserStoriesSkeleton } from "@/components/client/skeleton/user-stories-skeleton";
 import { Suspense } from "react";
 import { Metadata, ResolvingMetadata } from "next";
@@ -20,12 +18,10 @@ export async function generateMetadata(
 }
 
 export default function Page({params}: Props) {
- 
-  const finalUser = params.user
   return (
     <div className="dark:bg-slate-800 dark:text-white">
         <Suspense fallback={<UserStoriesSkeleton username={params.user}/>}>
-          <UserStoriesServer user={finalUser}/>
+          <UserStoriesServer user={params.user}/>
         </Suspense>
     </div>
   );
