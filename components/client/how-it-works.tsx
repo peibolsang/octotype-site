@@ -42,9 +42,10 @@ const steps = new Map([
 
   interface Props {
     username: string
+    showUserProgress: boolean
   }
 
-  const HowItWorks: React.FC<Props> = ({ username }) => {
+  const HowItWorks: React.FC<Props> = ({ username, showUserProgress }) => {
     return(
       <Container>
       <Section
@@ -54,7 +55,7 @@ const steps = new Map([
       >
         <div className="flex flex-col lg:flex-row gap-[16px]">
           {Array.from(steps, ([key, value]) => (
-            <Card key={key}>
+            <Card key={key} className={showUserProgress && value.title==="Step 1"? `bg-green-200 dark:bg-green-700`:``}>
               <div
                 className="flex flex-row lg:flex-col gap-[16px] p-[24px] h-full items-center lg:items-start"
               >

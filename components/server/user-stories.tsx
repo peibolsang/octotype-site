@@ -1,10 +1,10 @@
-import { getAllPosts, hasRepo} from "@/lib/api";
-import { UserFeaturedStoryClient } from "@/components/client/user-featured-story";
+import { getAllPosts, getPinnedPosts, hasRepo} from "@/lib/api";
+import { UserFeaturedStoriesClient } from "@/components/client/user-featured-stories";
 import Container from "@/components/ui/container";
 import UserMoreStoriesClient from "@/components/client/user-more-stories";
 import { HowItWorks } from "../client/how-it-works";
 import Section from "@/components/ui/section";
-import { PostPreviewSkeleton } from "../client/skeleton/post-preview-skeleton";
+import { Badge } from "@/components/ui/badge";
 import { revalidatePath } from 'next/cache'
 import { CMS_NAME } from "@/lib/constants";
 
@@ -12,7 +12,12 @@ interface UserStoriesServerProps {
   user: string;
 }
 
-const UserError: React.FC<UserStoriesServerProps> = ({ user }) => {
+interface UserErrorProps {
+  user: string;
+  hasRepo:boolean
+}
+
+const UserError: React.FC<UserErrorProps> = ({ user, hasRepo }) => {
   return (
     <>
               <section className="bg-[#f4f1ea] bg-opacity-70 dark:bg-slate-900 py-[16px] xl:py-[32px]">
@@ -26,20 +31,22 @@ const UserError: React.FC<UserStoriesServerProps> = ({ user }) => {
                   </h4>
                 </div>
                 <Section>
-                  <div className="flex flex-col lg:flex-row gap-[16px] w-full">
-                    <HowItWorks username={user}/>
+                  {
+                    hasRepo?
+                      <Badge variant="outline" className="inline-flex items-center gap-2 w-fit py-1 px-2 bg-slate-200 dark:bg-slate-700 rounded-xl text-[0.875rem] font-medium font-mono border-none mb-4">
+                        We couldn't find stories for this user
+                      </Badge>
+                    :
+                      <Badge variant="outline" className="bg-red-200 text-red-500 dark:bg-red-500 dark:text-white inline-flex items-center gap-2 w-fit py-1 px-2 rounded-xl text-[0.875rem] font-medium font-mono border-none mb-4">
+                        User is not initialized yet
+                      </Badge>
+                  }
+                  <div className="flex flex-col lg:flex-row w-full">
+                    <HowItWorks username={user} showUserProgress={hasRepo}/>
                   </div>
                 </Section>
               </Container>
             </section>
-            <Container>
-                <Section title="You don't have stories yet!">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
-                      <PostPreviewSkeleton/>
-                      <PostPreviewSkeleton/>
-                  </div>
-                </Section>
-            </Container>
           </>
   )
 
@@ -54,13 +61,16 @@ const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
       })
     )).flatMap(posts => posts || []);
 
+    const hasRepoFlag = await hasRepo(user)
+
     const lastPosts = allPosts.flat().sort((a, b) => {
         return new Date(b.date).getTime() - new Date(a.date).getTime();
       });
-    
-      const featuredPost = lastPosts?.[0] ?? null;
-      const morePosts = lastPosts?.slice(1) ?? [];
 
+      const pinnedSlugNumbers = await getPinnedPosts(lastPosts)
+      const pinnedPosts = lastPosts.filter(post => 
+        pinnedSlugNumbers.includes(post.slug.number)
+    );
       //revalidatePath('/[user]', 'page')
 
       return (
@@ -68,13 +78,13 @@ const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
           {
             lastPosts.length>0?
             <div>
-              <UserFeaturedStoryClient featuredPost={featuredPost} user={user} />
-                <Container>
-                {morePosts.length > 0 && <UserMoreStoriesClient posts={morePosts} />}
+              <UserFeaturedStoriesClient featuredPosts={pinnedPosts} user={user} />
+              <Container>
+                {lastPosts.length > 0 && <UserMoreStoriesClient posts={lastPosts} user={user} />}
               </Container>
             </div>
             :
-            <UserError user={user}/>
+            <UserError user={user} hasRepo={hasRepoFlag}/>
           }
         </>
       )

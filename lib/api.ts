@@ -1,4 +1,5 @@
 import type PostType from '@/interfaces/post'
+import type EventType from '@/interfaces/event';
 import type Author from '@/interfaces/author';
 import type Reactions from '@/interfaces/reactions'
 import type CommentType from '@/interfaces/comment';
@@ -24,6 +25,7 @@ export async function fetchGitHubAPI(url: string) {
     headers['Authorization'] = `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`;
   }
 
+  
   const params = {
     method: 'GET',
     headers: headers,
@@ -111,7 +113,8 @@ export async function getPostFromGitHubIssue(item: GitHubIssue) {
     comments: [],
     reading_time: calculateReadingTime(item.body),
     html_url: item.html_url,
-    labels: issueLabels
+    labels: issueLabels,
+    events_url: item.events_url
   }
   return post;
 }
@@ -233,6 +236,38 @@ export async function getPostComments(username: string, number: string) {
     return comments;
 }
 
+const getEvents = async (eventsUrl: string) => {
+  try {
+      const response = await fetchGitHubAPI(eventsUrl);
+      if (!response.ok) {
+          throw new Error(`Error fetching events: ${response.statusText}`);
+      }
+      return await response.json();
+  } catch (error) {
+      console.error(error);
+      return [];
+  }
+};
+
+const isIssuePinned = (events: string[]): boolean => {
+  const latestEvent = [...events].reverse().find(event => 
+      event === 'pinned' || event === 'unpinned'
+  );
+  return latestEvent === 'pinned';
+};
+
+
+export const getPinnedPosts = async (posts:PostType[]) => {
+
+  const pinnedPosts = (await Promise.all(
+    posts.map(async (post: PostType) => {
+      const postEvents = await getEvents(post.events_url);
+      return isIssuePinned(postEvents.map((e: EventType)=>e.event))? post.slug.number : null
+    })
+  ))
+
+  return pinnedPosts.filter(value => value!=null)
+};
 
 /*
 * USER FUNCTIONS 
@@ -261,8 +296,8 @@ export async function hasRepo(username:string) {
     const response = await fetchGitHubAPI(`https://api.github.com/repos/${username}/${REPO_NAME}`);
     const data = await response.json();
 
-    if (!data || !data.items ) {
-      return false
+    if (!data.name ) {
+      return false;
     }
 
     return true;  

@@ -1,9 +1,7 @@
 import { StoryServer } from "@/components/server/story";
-import MainHeader from "@/components/client/main-header";
 import { StorySkeleton } from "@/components/client/skeleton/story-skeleton";
 import { Suspense } from "react";
 import { Metadata, ResolvingMetadata } from 'next'
-
 import createMetadata from "@/lib/metadata";
 
 

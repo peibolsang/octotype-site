@@ -11,7 +11,7 @@ type Props = {
         <div className="flex flex-row mt-2">
             {
             labels.map((label) => (
-              <Badge className={`bg-[#9aae8e] hover:bg-[#9aae8e] text-white hover:text-white dark:bg-[#818CF8] dark:hover:bg-[#818CF8] dark:text-white dark:hover:text-white font-light w-fit rounded-full mr-2`}>
+              <Badge key={label.name} className={`bg-[#9aae8e] hover:bg-[#9aae8e] text-white hover:text-white dark:bg-[#818CF8] dark:hover:bg-[#818CF8] dark:text-white dark:hover:text-white font-light w-fit rounded-full mr-2`}>
                 {label.name}
               </Badge>
             ))
