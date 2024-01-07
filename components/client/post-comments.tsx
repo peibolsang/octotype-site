@@ -2,11 +2,16 @@ import type CommentType from "@/interfaces/comment";
 import Avatar from "@/components/ui/avatar";
 import DateFormatter from "@/components/ui/date-formatter";
 import Reactions from "@/components/client/reactions";
-import markdownStyles from "@/components/ui/markdown-styles.module.css";
 import Container from "../ui/container";
 import { REPO_NAME } from "@/lib/constants";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
+import markdownStyles from "@/components/ui/markdown-styles.module.css";
+import React from 'react'
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import {coldarkCold} from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 type Props = {
   comments: CommentType[];
@@ -35,10 +40,33 @@ const PostComments = ({ comments, issuenumber, username }: Props) => {
                   <span className="ml-1 mr-1">on</span>
                   <DateFormatter key={comment.date} dateString={comment.date} />
                 </div>
-                <div
-                  className={`px-5 ${markdownStyles["markdown"]}`}
-                  dangerouslySetInnerHTML={{ __html: comment.content }}
-                ></div>
+                <div className="px-5"
+                >
+                  <Markdown
+                    className={markdownStyles["markdown"]} 
+                    remarkPlugins={[remarkGfm]}
+                    children={comment.content}
+                    components={{
+                      code(props){
+                      const {children, className, node, ...rest} = props
+                      const match = /language-(\w+)/.exec(className || '')
+                      return match ? (
+                        <SyntaxHighlighter
+                          PreTag="div"
+                          children={String(children).replace(/\n$/, '')}
+                          language={match[1]}
+                          style={coldarkCold}
+                        />
+                      ) : (
+                        <code {...rest} className={className}>
+                          {children}
+                        </code>
+                      )
+                      }
+                    }
+                    }
+                  />
+                </div>
                 <div className="sm:flex flex-row md:flex items-center ml-5">
                   <Reactions
                     key={comment.date}
