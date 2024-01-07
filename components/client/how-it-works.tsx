@@ -76,7 +76,7 @@ const steps = new Map([
                 <div className={showUserProgress && value.title==="Step 1"? `dark:text-white md:text-1xl font-medium text-white leading-7`: `dark:text-white md:text-1xl font-medium text-slate-600 leading-7`}>
                   {showUserProgress && value.title==="Step 1"? 
                     <>
-                      Repo <Code>{username}/octotype</Code> already created
+                      <Code>octotype</Code> repo already created
                     </>:value.content(username)}
                 </div>
               </div>
