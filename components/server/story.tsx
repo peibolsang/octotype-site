@@ -1,5 +1,4 @@
 import { getPost, getPostComments} from "@/lib/api";
-import markdownToHtml from "@/lib/markdownToHtml";
 import { StoryClient } from "@/components/client/story";
 import Container from "@/components/ui/container";
 import { revalidatePath } from "next/cache";
@@ -28,7 +27,7 @@ const StoryServer = async ({ user, slug }: StoryServerProps) => {
     }
 
     const commentsdata = await getPostComments(user, slug);
-    const content = await markdownToHtml(post.content || "");
+    const content = post.content
 
 
     //revalidatePath('/[user]/stories/[slug]', 'page')

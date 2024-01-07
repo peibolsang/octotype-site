@@ -7,8 +7,7 @@ import { MAX_WORDS } from './constants'
 import { REPO_NAME } from './constants'
 import { LABEL } from '@/lib/constants'
 import type GitHubIssue from '@/interfaces/githubissue';
-import {HOME_OG_IMAGE_URL} from './constants'
-import markdownToHtml from '@/lib/markdownToHtml'
+import {HOME_OG_IMAGE_URL} from '@/lib/constants'
 import LabelType from '@/interfaces/label';
 
 
@@ -102,7 +101,7 @@ export async function getPostFromGitHubIssue(item: GitHubIssue) {
     title: item.title, 
     date: item.created_at,
     author: issueauthor,
-    excerpt: await markdownToHtml(excerpt || ''),
+    excerpt: excerpt,
     ogImage: {
       url: HOME_OG_IMAGE_URL
     },
@@ -213,7 +212,7 @@ export async function getCommentFromGitHubIssue(item: GitHubIssue) {
     ogImage: {
       url: HOME_OG_IMAGE_URL
     },
-    content: await markdownToHtml(item.body || ''),
+    content: item.body,
     reactions_count: item.reactions.total_count,
     reactions: commentreactions,
   }
