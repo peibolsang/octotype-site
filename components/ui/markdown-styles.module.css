@@ -10,11 +10,11 @@
 }
 
 .markdown pre {
-  @apply text-base overflow-x-auto sm:overflow-scroll bg-slate-300 p-2 text-black rounded-md
+  @apply text-base overflow-x-auto sm:overflow-scroll p-2 text-black rounded-md
 }
 
 .markdown code {
-  @apply text-base overflow-x-auto sm:overflow-scroll 
+  @apply text-base overflow-x-auto sm:overflow-scroll
 }
 .markdown li {
   @apply list-disc ml-10
@@ -37,6 +37,25 @@
 
 .markdown a{
   @apply text-blue-400 dark:text-white
+}
+.markdown table{
+  @apply border border-slate-300 bg-transparent table-auto
+}
+
+.markdown table tr{
+  @apply border border-slate-300 bg-transparent
+}
+
+.markdown table td{
+  @apply border border-slate-300 bg-transparent p-2
+}
+
+.markdown table th{
+  @apply border border-slate-300 bg-transparent p-2
+}
+
+.markdown ul.contains-task-list{
+  @apply list-none
 }
 
 .markdown blockquote p{ 
