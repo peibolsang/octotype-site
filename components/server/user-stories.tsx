@@ -38,7 +38,7 @@ const UserError: React.FC<UserErrorProps> = ({ user, hasRepo }) => {
                       </Badge>
                     :
                       <Badge variant="outline" className="bg-red-200 text-red-500 dark:bg-red-500 dark:text-white inline-flex items-center gap-2 w-fit py-1 px-2 rounded-xl text-[0.875rem] font-medium font-mono border-none mb-4">
-                        User is not initialized yet
+                        User not initialized yet
                       </Badge>
                   }
                   <div className="flex flex-col lg:flex-row w-full">

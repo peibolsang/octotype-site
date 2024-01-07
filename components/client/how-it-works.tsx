@@ -3,6 +3,7 @@ import {Card} from "@/components/ui/card";
 import Container from "@/components/ui/container";
 import React from "react";
 import Code from "@/components/ui/code";
+import { CheckCircledIcon } from "@radix-ui/react-icons";
 
 const steps = new Map([
     [
@@ -55,15 +56,28 @@ const steps = new Map([
       >
         <div className="flex flex-col lg:flex-row gap-[16px]">
           {Array.from(steps, ([key, value]) => (
-            <Card key={key} className={showUserProgress && value.title==="Step 1"? `bg-green-200 dark:bg-green-700`:``}>
+            <Card key={key} className={showUserProgress && value.title==="Step 1"? `bg-[#9aae8e] dark:bg-green-700 dark:bg-[#818CF8]`:``}>
               <div
                 className="flex flex-row lg:flex-col gap-[16px] p-[24px] h-full items-center lg:items-start"
               >
-                <div className="md:text-1xl lg:text-[1.25rem] font-bold text-gray-800 dark:text-white min-w-max">
-                  {value.title}
+                <div className={showUserProgress && value.title==="Step 1"? `md:text-1xl lg:text-[1.25rem] font-bold text-white dark:text-white min-w-max` : `md:text-1xl lg:text-[1.25rem] font-bold text-gray-800 dark:text-white min-w-max` }>
+                  {
+                  showUserProgress && value.title==="Step 1"? 
+                    <>
+                      <div className="flex flex-row">
+                        {value.title}
+                        <CheckCircledIcon className="ml-2 mt-1 size-5"/>
+                      </div>
+                    </>
+                    :
+                    value.title
+                  }
                 </div>
-                <div className="dark:text-white md:text-1xl font-medium text-slate-600 leading-7">
-                  {value.content(username)}{" "}
+                <div className={showUserProgress && value.title==="Step 1"? `dark:text-white md:text-1xl font-medium text-white leading-7`: `dark:text-white md:text-1xl font-medium text-slate-600 leading-7`}>
+                  {showUserProgress && value.title==="Step 1"? 
+                    <>
+                      Repo <Code>{username}/octotype</Code> already created
+                    </>:value.content(username)}
                 </div>
               </div>
             </Card>
