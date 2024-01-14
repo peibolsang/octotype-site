@@ -8,6 +8,11 @@ import markdownStyles from "@/components/ui//markdown-styles.module.css";
 import LabelType from "@/interfaces/label";
 import PostLabels from "@/components/client/post-labels";
 import { DrawingPinFilledIcon } from "@radix-ui/react-icons";
+import React from 'react'
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import {coldarkCold} from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 type Props = {
   title: string;
@@ -38,7 +43,7 @@ const PostPreview = ({
   pinned
 }: Props) => {
   return (
-    <Card className="min-h-[350px] m-4" interactive>
+    <Card className={excerpt!=""? `min-h-[500px] m-4`:`min-h-[350px] m-4`} interactive>
       
             <CardHeader>
               <div className="flex items-center">
@@ -68,10 +73,39 @@ const PostPreview = ({
                 {title}
               </h3>
             </Link>
-              <div
-                className={`${markdownStyles["markdown"]} hidden md:line-clamp-2 lg:line-clamp-2`}
-                dangerouslySetInnerHTML={{ __html: excerpt }}
-              />
+              {
+                excerpt!=""?
+                <div className="py-3 md:line-clamp-2 lg:line-clamp-5">
+                  <Markdown
+                    className={markdownStyles["markdown"]} 
+                    remarkPlugins={[remarkGfm]}
+                    children={excerpt}
+                    components={{
+                    code(props){
+                      const {children, className, node, ...rest} = props
+                      const match = /language-(\w+)/.exec(className || '')
+                      return match ? (
+                        <SyntaxHighlighter
+                          PreTag="div"
+                          children={String(children).replace(/\n$/, '')}
+                          language={match[1]}
+                          style={coldarkCold}
+                        />
+                      ) 
+                      : 
+                      (
+                        <code {...rest} className={className}>
+                          {children}
+                        </code>
+                      )
+                    }
+                  }
+                  }
+                  />
+                </div>
+                :
+                <></>
+              }
           <PostLabels labels={labels}/>
           <div className="flex items-center mt-4">
             <span className="mr-2">

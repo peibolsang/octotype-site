@@ -70,11 +70,12 @@ const PostCarousel: React.FC<PostCarouselProps> = ({ posts, basis }) => {
                       date={post.date}
                       author={post.author}
                       slug={post.slug}
-                      excerpt={""}
+                      excerpt={post.excerpt}
                       comments_count={post.comments_count}
                       reactions_count={post.reactions_count}
                       reading_time={post.reading_time}
                       labels={post.labels}
+                      pinned={post.pinned}
                     />
                   </CarouselItem>
                 ))}

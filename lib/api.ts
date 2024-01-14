@@ -3,7 +3,7 @@ import type EventType from '@/interfaces/event';
 import type Author from '@/interfaces/author';
 import type Reactions from '@/interfaces/reactions'
 import type CommentType from '@/interfaces/comment';
-import { MAX_WORDS } from './constants'
+import { CONFIG_FILE, MAX_WORDS, RAW_URL } from './constants'
 import { REPO_NAME } from './constants'
 import { LABEL } from '@/lib/constants'
 import type GitHubIssue from '@/interfaces/githubissue';
@@ -301,4 +301,19 @@ export async function hasRepo(username:string) {
     }
 
     return true;  
+}
+
+export async function getUserConfig(username:string){
+  // Make the API request. We need to append a random number to invalidate Github's raw cache in every call
+  const randomNumber = Math.floor(Math.random() * 10000).toString()
+  const response = await fetch(`${RAW_URL}/${username}/${REPO_NAME}/${CONFIG_FILE}?${randomNumber}`);
+
+  try{
+    const data=await response.json();
+    return data
+  }
+  catch(e){
+    console.log("Config JSON not found for user: "+username)
+    return null
+  }
 }

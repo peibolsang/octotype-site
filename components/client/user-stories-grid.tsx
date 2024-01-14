@@ -1,12 +1,12 @@
 import PostPreview from "@/components/client/post-preview";
-import type Post from "@/interfaces/post";
+import type PostType from "@/interfaces/post";
 import Section from "@/components/ui//section";
 
 type Props = {
-  posts: Post[];
+  posts: PostType[];
 };
 
-const UserStoriesClient = ({ posts}: Props) => {
+const UserStoriesGrid = ({ posts}: Props) => {
   return (
     <Section>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
@@ -30,4 +30,4 @@ const UserStoriesClient = ({ posts}: Props) => {
   );
 };
 
-export default UserStoriesClient;
+export default UserStoriesGrid;

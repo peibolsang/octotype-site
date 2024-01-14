@@ -5,3 +5,7 @@ export const EXAMPLE_PATH = 'blog-starter'
 export const CMS_NAME = 'GitHub Issues'
 export const HOME_OG_IMAGE_URL = 'https://octotype.vercel.app/assets/blog/preview/cover.jpg'
 export const USE_OPEN_AI=false
+export const MINIMALIST="minimalist"
+export const MAGAZINE="magazine"
+export const RAW_URL="https://raw.githubusercontent.com"
+export const CONFIG_FILE="main/config.json"
