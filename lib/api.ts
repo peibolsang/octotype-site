@@ -113,7 +113,8 @@ export async function getPostFromGitHubIssue(item: GitHubIssue) {
     reading_time: calculateReadingTime(item.body),
     html_url: item.html_url,
     labels: issueLabels,
-    events_url: item.events_url
+    events_url: item.events_url,
+    pinned: false
   }
   return post;
 }

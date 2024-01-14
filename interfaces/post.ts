@@ -24,6 +24,7 @@ type PostType = {
   html_url: string
   labels: Array<LabelType>
   events_url: string
+  pinned: boolean
 }
 
 export default PostType

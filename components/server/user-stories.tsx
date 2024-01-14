@@ -1,7 +1,6 @@
 import { getAllPosts, getPinnedPosts, hasRepo} from "@/lib/api";
-import { UserFeaturedStoriesClient } from "@/components/client/user-featured-stories";
 import Container from "@/components/ui/container";
-import UserMoreStoriesClient from "@/components/client/user-more-stories";
+import UserStoriesClient from "@/components/client/user-stories";
 import { HowItWorks } from "../client/how-it-works";
 import Section from "@/components/ui/section";
 import { Badge } from "@/components/ui/badge";
@@ -63,24 +62,36 @@ const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
 
     const hasRepoFlag = await hasRepo(user)
 
-    const lastPosts = allPosts.flat().sort((a, b) => {
+    const sortedPosts = allPosts.flat().sort((a, b) => {
         return new Date(b.date).getTime() - new Date(a.date).getTime();
       });
 
-      const pinnedSlugNumbers = await getPinnedPosts(lastPosts)
-      const pinnedPosts = lastPosts.filter(post => 
-        pinnedSlugNumbers.includes(post.slug.number)
-    );
+    const pinnedSlugNumbers = await getPinnedPosts(sortedPosts)
+
+    const pinnedPosts = sortedPosts.filter(post => pinnedSlugNumbers.includes(post.slug.number)).map(post=>{return{ ...post, pinned:true}})
+    const morePosts = sortedPosts.filter(post=>!pinnedSlugNumbers.includes(post.slug.number))
+    const finalPosts = pinnedPosts.concat(morePosts)
       //revalidatePath('/[user]', 'page')
 
       return (
         <>
           {
-            lastPosts.length>0?
+            finalPosts.length>0?
             <div>
-              <UserFeaturedStoriesClient featuredPosts={pinnedPosts} user={user} />
+              <section className="bg-[#f4f1ea] bg-opacity-70 dark:bg-slate-900 py-[32px] xl:py-[32px]">
+                <Container>
+                  <div className="flex flex-col lg:flex-row justify-between items-baseline gap-[16px]">
+                    <h1 className="text-3xl md:text-7xl font-bold tracking-tighter leading-tight">
+                      {user}.
+                    </h1>
+                    <h4 className="text-center md:text-left text-lg">
+                      A tech blog using {CMS_NAME} as CMS
+                    </h4>
+                  </div>
+                </Container>
+              </section>
               <Container>
-                {lastPosts.length > 0 && <UserMoreStoriesClient posts={lastPosts} user={user} />}
+                {finalPosts.length > 0 && <UserStoriesClient posts={finalPosts} />}
               </Container>
             </div>
             :

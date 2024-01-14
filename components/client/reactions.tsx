@@ -30,7 +30,7 @@ const Reactions = ({ reactions,issuenumber,username }: Props) => {
       {Object.entries(reactions).map(([key, value]) => {
         if (value.toString() !== "0") {
           return (
-            <div className="mb-5 flex items-center">
+            <div key={key} className="mb-5 flex items-center">
               <Badge className="mr-3 bg-[#9aae8e] bg-opacity-70 text-white p-1 border-2 border-[#9aae8e] rounded-full hover:bg-bg-[#9aae8e] hover:bg-opacity-100 dark:bg-[#818CF8] dark:bg-opacity-50 dark:hover:bg-opacity-100 dark:border-[#818CF8]">
                 <Link href={href}>
                   <span className="text-l mr-2  text-sm" dangerouslySetInnerHTML={{ __html: `${icons[key]} ${value}` }}></span>
