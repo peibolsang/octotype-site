@@ -3,6 +3,7 @@ export const docs =
 # Octotype and GitHub Issues Integration
 Octotype seamlessly integrates specific features from GitHub Issues into your blog posts, enhancing functionality and user experience:
 
+- **Issues as posts**: Every GitHub issue with the \`published\` label will be available as a blog post in Octotype within the next 5 mins upon creation.
 - **Labels from Issues**: Labels you assign to your issues in the octotype repository on GitHub will be automatically mirrored as post labels in Octotype.
 - **Pinning Issues**: Issues you pin in GitHub Issues will also appear as pinned posts in Octotype. Note that Octotype adheres to GitHub's limitation, allowing a maximum of three pinned posts.
 
