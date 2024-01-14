@@ -21,6 +21,8 @@ Within your \`config.json\`, you have several keys to tailor the display of your
     - \`grid\`: A visually appealing grid layout (2x2 on large screens and 1x1 on mobile devices), showcasing your posts as attractive cards.
     - \`magazine\`: An elegant layout option, highlighting pinned posts in a carousel format, featuring your four most recent posts as cards, and listing older posts in a traditional table format.
 
+Note that changes in this configuration file will take 5 minutes to take effect, per GitHub's raw content cache rules.
+
 Example:
 \`\`\`json
 {
