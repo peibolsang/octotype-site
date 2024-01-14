@@ -16,7 +16,7 @@ Begin customizing Octotype by creating a \`config.json\` file in the root direct
 ## Configuration Options
 Within your \`config.json\`, you have several keys to tailor the display of your posts:
 
-- \`layou\`t: This key allows you to define the presentation of posts on your user home page. You can select from the following layouts:
+- \`layout\`: This key allows you to define the presentation of posts on your user home page. You can select from the following layouts:
     - \`minimalist\`: A streamlined table view, displaying only the date and title of each post.
     - \`grid\`: A visually appealing grid layout (2x2 on large screens and 1x1 on mobile devices), showcasing your posts as attractive cards.
     - \`magazine\`: An elegant layout option, highlighting pinned posts in a carousel format, featuring your four most recent posts as cards, and listing older posts in a traditional table format.
