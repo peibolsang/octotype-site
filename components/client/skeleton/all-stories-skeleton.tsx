@@ -11,7 +11,7 @@ import Container from "@/components/ui/container";
 import Section from "@/components/ui/section";
 import { Progress } from "@/components/ui/progress";
 import { useEffect } from "react";
-import { PostPreviewSkeleton } from "./post-preview-skeleton";
+import { PostGridSkeleton } from "@/components/client/skeleton/post-grid-skeleton";
 import { DoubleArrowRightIcon, DoubleArrowLeftIcon } from "@radix-ui/react-icons";
 
 const AllStoriesSkeleton = () => {
@@ -71,10 +71,10 @@ const AllStoriesSkeleton = () => {
                 >
                     <CarouselContent>
                             <CarouselItem key={1} className="w-full basis-1/1 md:basis-1/2 lg:basis-1/2">
-                              <PostPreviewSkeleton/>
+                              <PostGridSkeleton/>
                             </CarouselItem>
                             <CarouselItem key={2} className="w-full basis-1/1 md:basis-1/2 lg:basis-1/2">
-                              <PostPreviewSkeleton/>
+                              <PostGridSkeleton/>
                             </CarouselItem>
                     </CarouselContent>
                     <ResponsiveCarouselButtons className="dark:hover:bg-slate-400 dark:hover:text-black" />

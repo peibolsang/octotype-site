@@ -2,7 +2,7 @@ import Container from '@/components/ui/container'
 
 const Footer = () => {
   return (
-    <footer className="dark:bg-slate-900 dark:text-white bg-[#f4f1ea] bg-opacity-70 border-t border-none ">
+    <footer className="dark:bg-slate-900 dark:text-white bg-[#f4f1ea] bg-opacity-70 border-t border-none mt-10">
       <Container>
       <div className="py-16 flex flex-col items-center justify-center">
     <h5 className="flex justify-center">

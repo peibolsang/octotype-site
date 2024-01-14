@@ -1,9 +1,9 @@
 
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "../../ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 
-const PostPreviewSkeleton = () => {
+const PostGridSkeleton = () => {
     return (
         <Card className="min-h-[350px] m-4" interactive>
             <CardHeader>
@@ -31,4 +31,4 @@ const PostPreviewSkeleton = () => {
       );
 }
 
-export {PostPreviewSkeleton};
+export {PostGridSkeleton};
