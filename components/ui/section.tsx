@@ -6,7 +6,7 @@ type Props = {
 
 const Section = ({ children, title, description }: Props) => {
   return (
-    <div className="flex flex-col gap-[32px] py-[32px]">
+    <div className="flex flex-col gap-[16px] py-[16px]">
       <div className="flex flex-col gap-[16px]">
         <h2 className="text-[1.5rem] xl:text-[2rem] font-bold">{title}</h2>
         {description && (
