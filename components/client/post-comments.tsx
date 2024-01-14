@@ -2,7 +2,7 @@ import type CommentType from "@/interfaces/comment";
 import Avatar from "@/components/ui/avatar";
 import DateFormatter from "@/components/ui/date-formatter";
 import Reactions from "@/components/client/reactions";
-import Container from "../ui/container";
+import Container from "@/components/ui/container";
 import { REPO_NAME } from "@/lib/constants";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";

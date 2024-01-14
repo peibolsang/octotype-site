@@ -4,13 +4,9 @@ import DarkModeButton from "@/components/ui/dark-mode-button";
 import Container from "@/components/ui/container";
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 

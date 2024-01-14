@@ -9,8 +9,6 @@ import {
     TableRow,
   } from "@/components/ui/table"
   import { Skeleton } from "@/components/ui/skeleton";
-  import Section from "@/components/ui/section";
-
 
 const PostTableSkeleton = () => {
     return (

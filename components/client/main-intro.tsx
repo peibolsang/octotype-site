@@ -2,7 +2,6 @@ import Cursor from "@/components/ui/input-cursor";
 import Container from "@/components/ui/container";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
-import { Pencil1Icon } from "@radix-ui/react-icons";
 
 const MainIntro = () => {
   const textarray = ["developers.", "the world."];
