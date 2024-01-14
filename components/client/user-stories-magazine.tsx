@@ -60,7 +60,7 @@ const UserStoriesMagazine= ({ posts}: Props) => {
       </div>
     </Section>
     <Section title={notPinnedPosts && notPinnedPosts.length>0? `Older Stories`:``}>
-      <div className="w-full">
+      <div className="mx-4 mt-6">
         <Card>
             <Table>
             <TableHeader>
