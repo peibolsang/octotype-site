@@ -13,19 +13,6 @@ interface Props {
 
   const UserStoriesSkeleton: React.FC<Props> = ({ username, config }) => {
     return(
-      <>
-        <section className="bg-[#f4f1ea] bg-opacity-70 dark:bg-slate-900 py-[32px] xl:py-[32px]">
-        <Container>
-          <div className="flex flex-col lg:flex-row justify-between items-baseline gap-[16px]">
-            <h1 className="text-3xl md:text-7xl font-bold tracking-tighter leading-tight">
-              {username}.
-            </h1>
-            <h4 className="text-center md:text-left text-lg">
-              A tech blog using {CMS_NAME} as CMS
-            </h4>
-          </div>
-        </Container>
-      </section>
       <Container>
         <Section>
             {
@@ -49,7 +36,6 @@ interface Props {
             }
         </Section>
       </Container>
-        </>
     )
   }
 

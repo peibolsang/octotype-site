@@ -29,7 +29,6 @@ const StoryServer = async ({ user, slug }: StoryServerProps) => {
     const commentsdata = await getPostComments(user, slug);
     const content = post.content
 
-
     //revalidatePath('/[user]/stories/[slug]', 'page')
 
     // Return StoryClient only if post is defined

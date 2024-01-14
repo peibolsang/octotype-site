@@ -69,13 +69,13 @@ const PostPreview = ({
               as={`/${author.name}/stories/${slug.number}`}
               href={`/${author.name}/stories/[slug]`}
               >
-              <h3 className="hover:underline text-xl xl:text-2xl leading-snug font-bold">
+              <h3 className={excerpt!=""? `hover:underline text-3xl xl:text-4xl leading-snug font-bold` : `hover:underline text-xl xl:text-2xl leading-snug font-bold`}>
                 {title}
               </h3>
             </Link>
               {
                 excerpt!=""?
-                <div className="py-3 md:line-clamp-2 lg:line-clamp-5">
+                <div className="line-clamp-2 md:line-clamp-2 lg:line-clamp-5">
                   <Markdown
                     className={markdownStyles["markdown"]} 
                     remarkPlugins={[remarkGfm]}
