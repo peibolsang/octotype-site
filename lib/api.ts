@@ -306,7 +306,13 @@ export async function hasRepo(username:string) {
 export async function getUserConfig(username:string){
   // Make the API request. We need to append a random number to invalidate Github's raw cache in every call
   const randomNumber = Math.floor(Math.random() * 10000).toString()
-  const response = await fetch(`${RAW_URL}/${username}/${REPO_NAME}/${CONFIG_FILE}?${randomNumber}`);
+  const params = {
+    method: 'GET',
+    next:{
+      revalidate: 300
+    }
+  };
+  const response = await fetch(`${RAW_URL}/${username}/${REPO_NAME}/${CONFIG_FILE}?${randomNumber}`,params);
 
   try{
     const data=await response.json();
