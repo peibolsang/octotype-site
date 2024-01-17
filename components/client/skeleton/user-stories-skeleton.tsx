@@ -8,32 +8,18 @@ import { PostTableSkeleton } from "@/components/client/skeleton/post-table-skele
 
 interface Props {
     username: string
-    config: ConfigType
   }
 
-  const UserStoriesSkeleton: React.FC<Props> = ({ username, config }) => {
+  const UserStoriesSkeleton: React.FC<Props> = ({ username }) => {
     return(
       <Container>
         <Section>
-            {
-              config && config.layout && config.layout===MINIMALIST?
-                  <PostTableSkeleton/>
-              :
-              config && config.layout && config.layout===MAGAZINE?
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
                   <PostGridSkeleton/>
                   <PostGridSkeleton/>
                   <PostGridSkeleton/>
                   <PostGridSkeleton/>
                 </div>  
-              :
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
-                  <PostGridSkeleton/>
-                  <PostGridSkeleton/>
-                  <PostGridSkeleton/>
-                  <PostGridSkeleton/>
-                </div>  
-            }
         </Section>
       </Container>
     )

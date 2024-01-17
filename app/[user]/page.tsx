@@ -3,8 +3,6 @@ import { UserStoriesSkeleton } from "@/components/client/skeleton/user-stories-s
 import { Suspense } from "react";
 import { Metadata, ResolvingMetadata } from "next";
 import createMetadata from "@/lib/metadata";
-import { getUserConfig } from "@/lib/api";
-import ConfigType from "@/interfaces/config";
 import Container from "@/components/ui/container";
 import { CMS_NAME } from "@/lib/constants";
 
@@ -21,7 +19,7 @@ export async function generateMetadata(
 }
 
 export default async function Page({params}: Props) {
-  const config: ConfigType = await getUserConfig(params.user)
+  
   
   return (
     <div className="dark:bg-slate-800 dark:text-white">
@@ -37,8 +35,8 @@ export default async function Page({params}: Props) {
           </div>
         </Container>
       </section>
-      <Suspense fallback={<UserStoriesSkeleton username={params.user} config={config}/>}>
-        <UserStoriesServer user={params.user} config={config}/>
+      <Suspense fallback={<UserStoriesSkeleton username={params.user}/>}>
+        <UserStoriesServer user={params.user}/>
       </Suspense>
     </div>
   );

@@ -5,16 +5,15 @@ import { HowItWorks } from "../client/how-it-works";
 import Section from "@/components/ui/section";
 import { Badge } from "@/components/ui/badge";
 import { revalidatePath } from 'next/cache'
-import { CMS_NAME } from "@/lib/constants";
-import PostType from "@/interfaces/post";
+import { getUserConfig } from "@/lib/api";
 import ConfigType from "@/interfaces/config";
+import PostType from "@/interfaces/post";
 import UserStoriesGrid from "@/components/client/user-stories-grid";
 import UserStoriesMagazine from "@/components/client/user-stories-magazine";
 import { MINIMALIST, MAGAZINE } from "@/lib/constants";
 
 interface UserStoriesServerProps {
   user: string;
-  config: ConfigType
 }
 
 interface UserErrorProps {
@@ -60,7 +59,7 @@ const movePinnedPostsFirst = async (sortedPosts: PostType[])=> {
 
 
 // Note: Server components should not use React.FC as they cannot have children or use React's context
-const UserStoriesServer = async ({ user, config }: UserStoriesServerProps) => {
+const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
   
     const users = [user]
     const allPosts = (await Promise.all(users.map(async (user) => await getAllPosts(user))))
@@ -70,7 +69,12 @@ const UserStoriesServer = async ({ user, config }: UserStoriesServerProps) => {
         return new Date(b.date).getTime() - new Date(a.date).getTime();
       });
 
-    const finalPosts = await movePinnedPostsFirst(sortedPosts)
+    const finalPostsReponse = movePinnedPostsFirst(sortedPosts)
+    const configResponse = getUserConfig(user)
+
+    // Parallel fetching
+
+    const [finalPosts, config] = await Promise.all([finalPostsReponse,configResponse])
     
     //revalidatePath('/[user]', 'page')
 

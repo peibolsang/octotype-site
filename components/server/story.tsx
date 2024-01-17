@@ -11,7 +11,12 @@ interface StoryServerProps {
 // Note: Server components should not use React.FC as they cannot have children or use React's context
 const StoryServer = async ({ user, slug }: StoryServerProps) => {
 
-    const post = await getPost(user, slug);
+    const postReponse =  getPost(user, slug);
+    const commentsReponse = getPostComments(user, slug);
+
+    //Parallel fetching
+    const [post, comments] = await Promise.all([postReponse,commentsReponse])
+    
     if (!post) {
       return (
         <>
@@ -26,7 +31,6 @@ const StoryServer = async ({ user, slug }: StoryServerProps) => {
       )
     }
 
-    const commentsdata = await getPostComments(user, slug);
     const content = post.content
 
     //revalidatePath('/[user]/stories/[slug]', 'page')
@@ -34,7 +38,7 @@ const StoryServer = async ({ user, slug }: StoryServerProps) => {
     // Return StoryClient only if post is defined
     return (
       <>
-        <StoryClient post={post} content={content} comments={commentsdata} />
+        <StoryClient post={post} content={content} comments={comments} />
       </>
     );
 };
