@@ -70,12 +70,15 @@ export async function getPostFromGitHubIssue(item: GitHubIssue) {
     html_url: item.user && "/" + item.user.login
   }
 
-  const issueLabels: LabelType[] = item.labels
-  .filter(label => label.name !== LABEL) // Filter out labels with name "published"
-  .map(label => ({
-    color: label.color,
-    name: label.name
-  }));
+  
+  
+  const issueLabels: LabelType[] = item.labels? item.labels
+    .map(label => ({
+      color: label.color,
+      name: label.name
+    }))
+  :
+  []
 
   const issuereactions: Reactions = {
     plusone: item.reactions && item.reactions['+1'],
@@ -139,8 +142,9 @@ export async function getPost(username: string,number: string){
     const response = await fetchGitHubAPI(`https://api.github.com/repos/${username}/${REPO_NAME}/issues/${number}`);
     const data = await response.json();
 
-    // We transform the GitHub Issue into a Blog post
-    return getPostFromGitHubIssue(data);
+    // We transform the GitHub Issue into a Blog post and we only return "published" posts
+    const post = await getPostFromGitHubIssue(data);
+    return post.labels.find(label=>label.name===LABEL)? post : null
   }
   catch (error){
     console.log(error)

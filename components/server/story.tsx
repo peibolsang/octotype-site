@@ -8,13 +8,17 @@ interface StoryServerProps {
   slug: string;
 }
 
+interface UserErrorProps {
+  user: string;
+}
 
 const getStory = unstable_cache(
   async(user, slug) =>{
+
+    // Parallel fetching
     const postReponse =  getPost(user, slug);
     const commentsReponse = getPostComments(user, slug);
 
-    //Parallel fetching
     return await Promise.all([postReponse,commentsReponse])
 
   },
@@ -24,33 +28,29 @@ const getStory = unstable_cache(
   }
 )
 
+const Story404: React.FC<UserErrorProps> = ({user}) => {
+  return(
+    <div className="bg-[#f4f1ea] bg-opacity-70 dark:bg-slate-900">
+      <Container compact>
+        <div className="flex flex-col py-[48px] gap-[24px]">
+        Looks like you're lost. We couldn't find this {user}'s story.
+      </div>
+    </Container>
+  </div>)
+}
+
+
 // Note: Server components should not use React.FC as they cannot have children or use React's context
 const StoryServer = async ({ user, slug }: StoryServerProps) => {
   
     const [post, comments] = await getStory(user,slug)
     
-    if (!post) {
-      return (
-        <>
-          <div className="bg-[#f4f1ea] bg-opacity-70 dark:bg-slate-900">
-              <Container compact>
-                  <div className="flex flex-col py-[48px] gap-[24px]">
-                      Looks like you're lost. We couldn't find this {user}'s story.
-                  </div>
-              </Container>
-          </div>
-        </>
-      )
+    if (!post || !post.content)  {
+      return <Story404 user={user} />
     }
 
     const content = post.content
-
-    // Return StoryClient only if post is defined
-    return (
-      <>
-        <StoryClient post={post} content={content} comments={comments} />
-      </>
-    );
+    return <StoryClient post={post} content={content} comments={comments} />
 };
 
 
