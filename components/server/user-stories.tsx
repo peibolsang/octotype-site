@@ -10,6 +10,7 @@ import UserStoriesGrid from "@/components/client/user-stories-grid";
 import UserStoriesMagazine from "@/components/client/user-stories-magazine";
 import { MINIMALIST, MAGAZINE } from "@/lib/constants";
 import { unstable_noStore } from "next/cache";
+import { unstable_cache} from "next/cache";
 
 interface UserStoriesServerProps {
   user: string;
@@ -57,11 +58,9 @@ const movePinnedPostsFirst = async (sortedPosts: PostType[])=> {
 }
 
 
-// Note: Server components should not use React.FC as they cannot have children or use React's context
-const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
 
-    unstable_noStore();
-
+const getUserStories = unstable_cache(
+  async(user) => {
     const users = [user]
     const allPosts = (await Promise.all(users.map(async (user) => await getAllPosts(user))))
       .flatMap(posts => posts || []);
@@ -74,8 +73,18 @@ const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
     const configResponse = getUserConfig(user)
 
     // Parallel fetching
+    return await Promise.all([finalPostsReponse,configResponse])
+  },
+  ['user-stories'],
+  {
+    revalidate: 5
+  }
+)
 
-    const [finalPosts, config] = await Promise.all([finalPostsReponse,configResponse])
+// Note: Server components should not use React.FC as they cannot have children or use React's context
+const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
+
+    const [finalPosts, config] = await getUserStories(user)
 
       return (
         <>

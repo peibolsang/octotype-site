@@ -1,9 +1,8 @@
 import { getPost, getPostComments} from "@/lib/api";
 import { StoryClient } from "@/components/client/story";
 import Container from "@/components/ui/container";
-import { unstable_cache, unstable_noStore } from "next/cache";
-import PostType from "@/interfaces/post";
-import CommentType from "@/interfaces/comment";
+import { unstable_cache} from "next/cache";
+
 
 interface StoryServerProps {
   user: string;
