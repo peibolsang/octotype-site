@@ -1,8 +1,10 @@
 import { getAllPosts, getAllUsers, getPost } from "@/lib/api";
 import {AllStoriesClient} from "@/components/client/all-stories";
-import { revalidatePath } from 'next/cache'
+import { unstable_noStore } from 'next/cache'
 
 const AllStoriesServer = async () => {
+
+    unstable_noStore
   
     const users = await getAllUsers();
     const allPosts = (await Promise.all(
@@ -14,8 +16,6 @@ const AllStoriesServer = async () => {
     const lastPosts = allPosts.flat().sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
-
-    //revalidatePath('/', 'page')
   
     return <AllStoriesClient lastPosts={lastPosts} />;
   };
