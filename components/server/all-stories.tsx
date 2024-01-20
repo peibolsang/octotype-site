@@ -4,7 +4,7 @@ import { unstable_noStore } from 'next/cache'
 
 const AllStoriesServer = async () => {
 
-    unstable_noStore
+    unstable_noStore()
   
     const users = await getAllUsers();
     const allPosts = (await Promise.all(
