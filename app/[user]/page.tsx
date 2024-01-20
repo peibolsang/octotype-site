@@ -20,7 +20,6 @@ export async function generateMetadata(
 
 export default async function Page({params}: Props) {
   
-  
   return (
     <div className="dark:bg-slate-800 dark:text-white">
       <section className="bg-[#f4f1ea] bg-opacity-70 dark:bg-slate-900 py-[32px] xl:py-[32px]">

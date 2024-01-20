@@ -4,13 +4,12 @@ import UserStoriesTable from "@/components/client/user-stories-table";
 import { HowItWorks } from "../client/how-it-works";
 import Section from "@/components/ui/section";
 import { Badge } from "@/components/ui/badge";
-import { revalidatePath } from 'next/cache'
 import { getUserConfig } from "@/lib/api";
-import ConfigType from "@/interfaces/config";
 import PostType from "@/interfaces/post";
 import UserStoriesGrid from "@/components/client/user-stories-grid";
 import UserStoriesMagazine from "@/components/client/user-stories-magazine";
 import { MINIMALIST, MAGAZINE } from "@/lib/constants";
+import { unstable_noStore } from "next/cache";
 
 interface UserStoriesServerProps {
   user: string;
@@ -60,7 +59,9 @@ const movePinnedPostsFirst = async (sortedPosts: PostType[])=> {
 
 // Note: Server components should not use React.FC as they cannot have children or use React's context
 const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
-  
+
+    unstable_noStore();
+
     const users = [user]
     const allPosts = (await Promise.all(users.map(async (user) => await getAllPosts(user))))
       .flatMap(posts => posts || []);
@@ -75,8 +76,6 @@ const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
     // Parallel fetching
 
     const [finalPosts, config] = await Promise.all([finalPostsReponse,configResponse])
-    
-    //revalidatePath('/[user]', 'page')
 
       return (
         <>
