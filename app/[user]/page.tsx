@@ -34,10 +34,7 @@ export default async function Page({params}: Props) {
           </div>
         </Container>
       </section>
-      
-      
         <UserStoriesServer user={params.user}/>
-      
     </div>
   );
 }
