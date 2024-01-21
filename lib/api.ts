@@ -154,7 +154,6 @@ export async function getPost(username: string,number: string){
 
 export async function getAllPosts(username: string) {
   try {
-    const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
     // Make the API request
     const response = await fetchGitHubAPI(`https://api.github.com/repos/${username}/${REPO_NAME}/issues?labels=${LABEL}`);
     const data = await response.json();
@@ -171,7 +170,6 @@ export async function getAllPosts(username: string) {
         .filter(item => item.user.login === username)
         .map(async item => await getPostFromGitHubIssue(item))
     );
-    delay(2000)
     return posts;
   } catch (error) {
     console.log(error);

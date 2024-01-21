@@ -36,7 +36,7 @@ export default async function Page({params}: Props) {
       </section>
       <Suspense fallback={<UserStoriesSkeleton username={params.user}/>}>
         <UserStoriesServer user={params.user}/>
-        </Suspense>
+      </Suspense>
     </div>
   );
 }
