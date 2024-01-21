@@ -43,10 +43,6 @@ const getUserStories = async (user:string) => {
 
 }
 
-export const preload = (user: string) => {
-  void getUserStories(user)
-}
-
 // Note: Server components should not use React.FC as they cannot have children or use React's context
 const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
 

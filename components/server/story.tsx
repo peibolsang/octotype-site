@@ -26,10 +26,6 @@ const getStory = unstable_cache(
   }
 )
 
-export const preload = (user: string, id: string) => {
-  void getStory(user,id)
-}
-
 // Note: Server components should not use React.FC as they cannot have children or use React's context
 const StoryServer = async ({ user, slug }: StoryServerProps) => {
   

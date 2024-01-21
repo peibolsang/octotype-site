@@ -1,4 +1,4 @@
-import { StoryServer, preload } from "@/components/server/story";
+import { StoryServer} from "@/components/server/story";
 import { StorySkeleton } from "@/components/client/skeleton/story-skeleton";
 import { Suspense } from "react";
 import { Metadata, ResolvingMetadata } from 'next'
@@ -18,9 +18,6 @@ export async function generateMetadata(
 }
 
 export default function Page({params}: Props) {
-
-  preload(params.user, params.slug)
-
   return (
     <div className="dark:bg-slate-800 dark:text-white">
         <Suspense fallback={<StorySkeleton username={params.user}/>}>
