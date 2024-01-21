@@ -18,20 +18,17 @@ This gives us better API rate limits, but it's not necessary on the server (by n
 */
 
 export async function fetchGitHubAPI(url: string) {
-  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
   const headers: Record<string, string> = {};
 
   if (process.env.NEXT_PUBLIC_GITHUB_TOKEN) {
     headers['Authorization'] = `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`;
   }
-
   
   const params = {
     method: 'GET',
     headers: headers
   };
 
-  await delay(2000)
   const response = await fetch(url, params);
   return response;
 }
@@ -157,6 +154,7 @@ export async function getPost(username: string,number: string){
 
 export async function getAllPosts(username: string) {
   try {
+    const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
     // Make the API request
     const response = await fetchGitHubAPI(`https://api.github.com/repos/${username}/${REPO_NAME}/issues?labels=${LABEL}`);
     const data = await response.json();
@@ -173,7 +171,7 @@ export async function getAllPosts(username: string) {
         .filter(item => item.user.login === username)
         .map(async item => await getPostFromGitHubIssue(item))
     );
-    
+    delay(2000)
     return posts;
   } catch (error) {
     console.log(error);
