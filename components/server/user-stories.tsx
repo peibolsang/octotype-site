@@ -43,12 +43,6 @@ const getUserStories = async (user:string) => {
 
 }
 
-export const preload = (user: string) => {
-  // void evaluates the given expression and returns undefined
-  // https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void
-  void getUserStories(user)
-}
-
 // Note: Server components should not use React.FC as they cannot have children or use React's context
 const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
 
