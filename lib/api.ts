@@ -238,16 +238,11 @@ export async function getPostComments(username: string, number: string) {
 }
 
 const getEvents = async (eventsUrl: string) => {
-  try {
       const response = await fetchGitHubAPI(eventsUrl);
       if (!response.ok) {
-          throw new Error(`Error fetching events: ${response.statusText}`);
+          return []
       }
       return await response.json();
-  } catch (error) {
-      console.error(error);
-      return [];
-  }
 };
 
 const isIssuePinned = (events: string[]): boolean => {
@@ -312,12 +307,6 @@ export async function getUserConfig(username:string){
   };
   const response = await fetch(`${RAW_URL}/${username}/${REPO_NAME}/${CONFIG_FILE}?${randomNumber}`,params);
 
-  try{
-    const data=await response.json();
-    return data
-  }
-  catch(e){
-    console.log("Config JSON not found for user: "+username)
-    return null
-  }
+  if (!response.ok) return null
+  return await response.json();
 }
