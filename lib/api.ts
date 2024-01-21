@@ -9,6 +9,7 @@ import { LABEL } from '@/lib/constants'
 import type GitHubIssue from '@/interfaces/githubissue';
 import {HOME_OG_IMAGE_URL} from '@/lib/constants'
 import LabelType from '@/interfaces/label';
+import 'server-only'
 
 
 /* 

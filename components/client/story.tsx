@@ -10,11 +10,9 @@ import Reactions from "./reactions";
 
 interface StoryProps {
   post: PostType; // Use the Post interface here
-  content: string;
-  comments: CommentType[]
 }
 
-  const StoryClient: React.FC<StoryProps> = ({ post, content, comments }) => {
+  const StoryClient: React.FC<StoryProps> = ({ post }) => {
     return(
       <>
         <article className="mb-16">
@@ -36,13 +34,13 @@ interface StoryProps {
                 labels={post.labels}
             />
         <Container compact>
-          <PostBody content={content} />
+          <PostBody content={post.content} />
           <Reactions reactions={post.reactions} issuenumber={post.slug.number} username={post.author.name}/>
         </Container>
       </article>
       <div className="border-t-2 border-slate-200 pt-5">
           <PostComments
-            comments={comments}
+            comments={post.comments}
             issuenumber={post.slug.number}
             username={post.author.name}
           />

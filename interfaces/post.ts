@@ -19,7 +19,7 @@ type PostType = {
   comments_count: string
   reactions_count: string
   reactions: Reactions
-  comments: Array<Comment>
+  comments: Comment[]
   reading_time: string
   html_url: string
   labels: Array<LabelType>

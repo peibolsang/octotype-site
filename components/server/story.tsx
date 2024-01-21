@@ -2,11 +2,13 @@ import { getPost, getPostComments} from "@/lib/api";
 import { StoryClient } from "@/components/client/story";
 import { Story404 } from "@/components/client/errors/story-404";
 import { unstable_cache } from "next/cache";
+import PostType from "@/interfaces/post";
 
 interface StoryServerProps {
   user: string;
   slug: string;
 }
+ 
 
 const getStory = unstable_cache(
   async(user, slug) =>{
@@ -24,6 +26,10 @@ const getStory = unstable_cache(
   }
 )
 
+export const preload = (user: string, id: string) => {
+  void getStory(user,id)
+}
+
 // Note: Server components should not use React.FC as they cannot have children or use React's context
 const StoryServer = async ({ user, slug }: StoryServerProps) => {
   
@@ -33,8 +39,8 @@ const StoryServer = async ({ user, slug }: StoryServerProps) => {
       return <Story404 user={user} />
     }
 
-    const content = post.content
-    return <StoryClient post={post} content={content} comments={comments} />
+    post.comments = comments
+    return <StoryClient post={post} />
 };
 
 

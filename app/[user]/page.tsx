@@ -1,4 +1,4 @@
-import { UserStoriesServer } from "@/components/server/user-stories";
+import { UserStoriesServer, preload } from "@/components/server/user-stories";
 import { UserStoriesSkeleton } from "@/components/client/skeleton/user-stories-skeleton";
 import { Suspense } from "react";
 import { Metadata, ResolvingMetadata } from "next";
@@ -20,6 +20,7 @@ export async function generateMetadata(
 
 export default async function Page({params}: Props) {
   
+  preload(params.user)
   
   return (
     <div className="dark:bg-slate-800 dark:text-white">
