@@ -18,6 +18,7 @@ This gives us better API rate limits, but it's not necessary on the server (by n
 */
 
 export async function fetchGitHubAPI(url: string) {
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
   const headers: Record<string, string> = {};
 
   if (process.env.NEXT_PUBLIC_GITHUB_TOKEN) {
@@ -30,6 +31,7 @@ export async function fetchGitHubAPI(url: string) {
     headers: headers
   };
 
+  await delay(2000)
   const response = await fetch(url, params);
   return response;
 }
