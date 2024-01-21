@@ -1,15 +1,11 @@
 import { getPost, getPostComments} from "@/lib/api";
 import { StoryClient } from "@/components/client/story";
-import Container from "@/components/ui/container";
+import { Story404 } from "@/components/client/errors/story-404";
 import { unstable_cache } from "next/cache";
 
 interface StoryServerProps {
   user: string;
   slug: string;
-}
-
-interface UserErrorProps {
-  user: string;
 }
 
 const getStory = unstable_cache(
@@ -27,18 +23,6 @@ const getStory = unstable_cache(
     revalidate: 3600
   }
 )
-
-const Story404: React.FC<UserErrorProps> = ({user}) => {
-  return(
-    <div className="bg-[#f4f1ea] bg-opacity-70 dark:bg-slate-900">
-      <Container compact>
-        <div className="flex flex-col py-[48px] gap-[24px]">
-        Looks like you're lost. We couldn't find this {user}'s story.
-      </div>
-    </Container>
-  </div>)
-}
-
 
 // Note: Server components should not use React.FC as they cannot have children or use React's context
 const StoryServer = async ({ user, slug }: StoryServerProps) => {
