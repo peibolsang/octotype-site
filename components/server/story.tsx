@@ -2,7 +2,6 @@ import { getPost, getPostComments} from "@/lib/api";
 import { StoryClient } from "@/components/client/story";
 import { Story404 } from "@/components/client/errors/story-404";
 import { unstable_cache } from "next/cache";
-import PostType from "@/interfaces/post";
 
 interface StoryServerProps {
   user: string;
