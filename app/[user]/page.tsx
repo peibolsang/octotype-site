@@ -1,6 +1,4 @@
 import { UserStoriesServer} from "@/components/server/user-stories";
-import { UserStoriesSkeleton } from "@/components/client/skeleton/user-stories-skeleton";
-import { Suspense } from "react";
 import { Metadata, ResolvingMetadata } from "next";
 import createMetadata from "@/lib/metadata";
 import Container from "@/components/ui/container";
@@ -34,9 +32,7 @@ export default async function Page({params}: Props) {
           </div>
         </Container>
       </section>
-      <Suspense fallback={<UserStoriesSkeleton username={params.user}/>}>
         <UserStoriesServer user={params.user}/>
-      </Suspense>
     </div>
   );
 }

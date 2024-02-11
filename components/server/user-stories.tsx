@@ -1,7 +1,7 @@
 import { getAllPosts, getPinnedPosts} from "@/lib/api";
 import Container from "@/components/ui/container";
 import UserStoriesTable from "@/components/client/user-stories-table";
-import { unstable_cache, unstable_noStore } from 'next/cache'
+import { unstable_cache } from 'next/cache'
 import { getUserConfig } from "@/lib/api";
 import PostType from "@/interfaces/post";
 import UserStoriesGrid from "@/components/client/user-stories-grid";

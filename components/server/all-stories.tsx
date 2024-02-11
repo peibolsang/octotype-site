@@ -1,6 +1,6 @@
-import { getAllPosts, getAllUsers, getPost } from "@/lib/api";
+import { getAllPosts, getAllUsers } from "@/lib/api";
 import {AllStoriesClient} from "@/components/client/all-stories";
-import { unstable_cache, unstable_noStore } from 'next/cache'
+import { unstable_cache } from 'next/cache'
 
 const getAllStories = unstable_cache(
   async () => {
