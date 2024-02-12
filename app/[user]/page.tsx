@@ -3,6 +3,8 @@ import { Metadata, ResolvingMetadata } from "next";
 import createMetadata from "@/lib/metadata";
 import Container from "@/components/ui/container";
 import { CMS_NAME } from "@/lib/constants";
+import { Suspense } from "react";
+import { UserStoriesSkeleton } from "@/components/client/skeleton/user-stories-skeleton";
 
 type Props = {
   params: {user: string}
@@ -32,7 +34,9 @@ export default async function Page({params}: Props) {
           </div>
         </Container>
       </section>
+      <Suspense fallback={<UserStoriesSkeleton/>}>
         <UserStoriesServer user={params.user}/>
+      </Suspense>
     </div>
   );
 }

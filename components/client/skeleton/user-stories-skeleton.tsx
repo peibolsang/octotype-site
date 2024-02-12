@@ -6,11 +6,7 @@ import ConfigType from "@/interfaces/config"
 import { PostTableSkeleton } from "@/components/client/skeleton/post-table-skeleton"
 
 
-interface Props {
-    username: string
-  }
-
-  const UserStoriesSkeleton: React.FC<Props> = ({ username }) => {
+  const UserStoriesSkeleton = () => {
     return(
       <Container>
         <Section>

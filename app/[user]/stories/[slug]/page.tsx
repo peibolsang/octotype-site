@@ -1,6 +1,8 @@
 import { StoryServer} from "@/components/server/story";
 import { Metadata, ResolvingMetadata } from 'next'
 import createMetadata from "@/lib/metadata";
+import { Suspense } from "react";
+import { StorySkeleton } from "@/components/client/skeleton/story-skeleton";
 
 
 type Props = {
@@ -18,7 +20,9 @@ export async function generateMetadata(
 export default function Page({params}: Props) {
   return (
     <div className="dark:bg-slate-800 dark:text-white">
+      <Suspense fallback={<StorySkeleton username={params.user}/>}>
           <StoryServer user={params.user} slug={params.slug}/>
+      </Suspense>
     </div>
   );
 }
