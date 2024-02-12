@@ -14,15 +14,6 @@ interface StoryProps {
     return(
       <>
         <article className="mb-16">
-        <Head>
-          <title>
-            {post.title} - {post.author.name}'s Blog on octotype
-          </title>
-          <meta property="og:image" content={post.ogImage.url} />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:image" content={post.ogImage.url} />
-          <meta name="twitter:title" content={post.title} />
-        </Head>
             <PostHeader
                 title={post.title}
                 date={post.date}
@@ -44,7 +35,6 @@ interface StoryProps {
           />
         </div>
     </>
-      
     )
   }
 

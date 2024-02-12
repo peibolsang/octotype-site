@@ -1,23 +1,13 @@
-'use client'
 import Head from "next/head";
 import Container from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 
-
-interface Props {
-    username: string
-}
    
-const StorySkeleton: React.FC<Props> = ({ username }) => {
+const StorySkeleton = () => {
     return(
       <>
         <article className="mb-16">
-        <Head>
-          <title>
-            New - {username}'s Blog on octotype
-          </title>
-        </Head>
         <div className="bg-[#f4f1ea] bg-opacity-70 dark:bg-slate-900">
             <Container compact>
                 <div className="flex flex-col py-[48px] gap-[24px]">
