@@ -20,7 +20,7 @@ export async function generateMetadata(
 export default function Page({params}: Props) {
   return (
     <div className="dark:bg-slate-800 dark:text-white">
-      <Suspense fallback={<StorySkeleton username={params.user}/>}>
+      <Suspense fallback={<StorySkeleton />}>
           <StoryServer user={params.user} slug={params.slug}/>
       </Suspense>
     </div>
