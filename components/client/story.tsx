@@ -1,11 +1,9 @@
-'use client'
 import PostType from "@/interfaces/post";
 import Head from "next/head";
 import PostHeader from "@/components/client/post-header";
 import Container from "@/components/ui/container";
 import PostBody from "@/components/client/post-body";
 import PostComments from "@/components/client/post-comments";
-import CommentType from "@/interfaces/comment";
 import Reactions from "./reactions";
 
 interface StoryProps {

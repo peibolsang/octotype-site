@@ -39,4 +39,4 @@ const StoryServer = async ({ user, slug }: StoryServerProps) => {
 };
 
 
-  export {StoryServer}
+export {StoryServer}
