@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Container from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -33,21 +32,21 @@ const StorySkeleton = () => {
             </Container>
         </div>
         <Container>
-            <div className="py-[32px]">
-                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-full h-[18px] rounded-lg" />
-                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-full h-[18px] rounded-lg" />
-                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-full h-[18px] rounded-lg" />
-                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-full h-[18px] rounded-lg" />
-                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-full h-[18px] rounded-lg" />
-                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-full h-[18px] rounded-lg" />
+            <div className="py-[32px] flex flex-col items-center justify-center">
+                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-2/3 h-[18px] rounded-lg" />
+                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-2/3 h-[18px] rounded-lg" />
+                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-2/3 h-[18px] rounded-lg" />
+                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-2/3 h-[18px] rounded-lg" />
+                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-2/3 h-[18px] rounded-lg" />
+                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-2/3 h-[18px] rounded-lg" />
             </div>
-            <div className="py-[16px]">
-                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-full h-[18px] rounded-lg" />
-                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-full h-[18px] rounded-lg" />
-                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-full h-[18px] rounded-lg" />
-                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-full h-[18px] rounded-lg" />
-                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-full h-[18px] rounded-lg" />
-                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-full h-[18px] rounded-lg" />
+            <div className="py-[16px] flex flex-col items-center justify-center">
+                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-2/3 h-[18px] rounded-lg" />
+                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-2/3 h-[18px] rounded-lg" />
+                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-2/3 h-[18px] rounded-lg" />
+                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-2/3 h-[18px] rounded-lg" />
+                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-2/3 h-[18px] rounded-lg" />
+                <Skeleton className="bg-[#f4f1ea] dark:bg-slate-200 ml-2 mb-2 w-2/3 h-[18px] rounded-lg" />
             </div>
         </Container>
       </article>

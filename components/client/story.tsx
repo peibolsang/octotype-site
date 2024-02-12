@@ -1,5 +1,4 @@
 import PostType from "@/interfaces/post";
-import Head from "next/head";
 import PostHeader from "@/components/client/post-header";
 import Container from "@/components/ui/container";
 import PostBody from "@/components/client/post-body";
