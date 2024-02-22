@@ -48,9 +48,9 @@ const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
       
         return await Promise.all([finalPostsReponse,configResponse])
     },
-      [`user-stories-${user}`],
+      ['user-stories'],
       {
-        tags: [`user-stories-${user}`],
+        tags: ['user-stories'],
         revalidate: 3600
       }
     )
