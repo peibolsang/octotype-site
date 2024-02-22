@@ -2,8 +2,7 @@ import { getAllPosts, getAllUsers } from "@/lib/api";
 import {AllStoriesClient} from "@/components/client/all-stories";
 import { unstable_cache as cache } from 'next/cache'
 
-const getAllStories = cache(
-  async () => {
+const getAllStories = async () => {
   const users = await getAllUsers();
   const allPosts = (await Promise.all(
       users.map(async (user) => {
@@ -15,14 +14,7 @@ const getAllStories = cache(
       return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
   return lastPosts
-},
-['all-stories'],
-{
-  tags: ['all-stories'],
-  revalidate: 3600
 }
-
-)
 
 const AllStoriesServer = async () => {
 

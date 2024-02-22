@@ -1,7 +1,6 @@
 import { getAllPosts, getPinnedPosts} from "@/lib/api";
 import Container from "@/components/ui/container";
 import UserStoriesTable from "@/components/client/user-stories-table";
-import { unstable_cache as cache } from 'next/cache'
 import { getUserConfig } from "@/lib/api";
 import PostType from "@/interfaces/post";
 import UserStoriesGrid from "@/components/client/user-stories-grid";
@@ -27,13 +26,7 @@ const movePinnedPostsFirst = async (sortedPosts: PostType[])=> {
 }
 
 
-
-
-// Note: Server components should not use React.FC as they cannot have children or use React's context
-const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
-
-    const getUserStories = await cache(
-      async (user:string) => {
+const getUserStories = async (user:string) => {
         const users = [user]
         const allPosts = (await Promise.all(users.map(async (user) => await getAllPosts(user))))
           .flatMap(posts => posts || []);
@@ -47,13 +40,10 @@ const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
         const configResponse = getUserConfig(user)
       
         return await Promise.all([finalPostsReponse,configResponse])
-    },
-    [`user-stories-${user}`],
-      {
-        tags: [`user-stories-${user}`],
-        revalidate: 3600
-      }
-    )
+}
+
+// Note: Server components should not use React.FC as they cannot have children or use React's context
+const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
 
     const [finalPosts, config] = await getUserStories(user)
 
