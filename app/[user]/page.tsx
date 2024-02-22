@@ -10,7 +10,7 @@ type Props = {
   params: {user: string}
 }
 
-/*
+
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
@@ -18,7 +18,7 @@ export async function generateMetadata(
   const md = createMetadata(params.user)
   return {...md}
 }
-*/
+
 
 export default async function Page({params}: Props) {
   
@@ -36,9 +36,9 @@ export default async function Page({params}: Props) {
           </div>
         </Container>
       </section>
-      <Suspense fallback={<UserStoriesSkeleton/>}>
+      
         <UserStoriesServer user={params.user}/>
-      </Suspense>
+      
     </div>
   );
 }
