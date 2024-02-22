@@ -50,7 +50,7 @@ const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
     },
       ['user-stories'],
       {
-        tags: [`user-stories-${user}`],
+        tags: [`user-stories`],
         revalidate: 3600
       }
     )
