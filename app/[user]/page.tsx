@@ -41,3 +41,6 @@ export default async function Page({params}: Props) {
     </div>
   );
 }
+
+export const dynamic = "force-static";
+export const runtime = "nodejs";

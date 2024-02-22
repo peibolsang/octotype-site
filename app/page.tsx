@@ -20,3 +20,7 @@ export default function Page() {
     </div>
   );
 }
+
+export const dynamic = "force-static";
+export const runtime = "nodejs";
+export const revalidate = 3600

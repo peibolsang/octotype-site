@@ -6,5 +6,8 @@ export async function POST(
 ) {
     const res = await request.json()
     revalidatePath(`/${params.user}`)
-    return Response.json({ res })
+    
+    return new Response('Success!', {
+      status: 200,
+    })
   }
