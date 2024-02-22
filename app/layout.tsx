@@ -7,7 +7,12 @@ import './globals.css'
 import { Inter } from 'next/font/google';
 import MainHeader from '@/components/client/main-header';
 
-const font=Inter({subsets: ['latin']})
+const font = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
+})
+
 
 export default function RootLayout({
   children,
