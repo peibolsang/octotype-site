@@ -84,8 +84,7 @@ const UserStoriesMagazine= ({ posts}: Props) => {
                         </TableCell>
                         <TableCell className="py-4 pr-3 w-3/4 hover:underline text-[1em] xl:text-[1.2em] leading-snug font-semibold">
                             <Link
-                                as={`/${post.author.name}/stories/${post.slug.number}`}
-                                href={`/${post.author.name}/stories/[slug]`}
+                                href={`/${post.author.name}/stories/${post.slug.number}`}
                             >
                                 {post.title}
                             </Link>
