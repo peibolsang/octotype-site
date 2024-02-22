@@ -15,7 +15,7 @@ export default function Page() {
         <MainIntro />
         <Suspense fallback={<AllStoriesSkeleton/>}>
           <AllStoriesServer />
-          </Suspense>
+        </Suspense>
         <HowItWorks username={'[user]'} showUserProgress={false} />
     </div>
   );
