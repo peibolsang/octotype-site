@@ -21,9 +21,9 @@ const StoryServer = async ({ user, slug }: StoryServerProps) => {
     
         return await Promise.all([postReponse,commentsReponse])
     },
-    ['story'],
+    [`story-${user}-${slug}`],
     {
-      tags: ['story'],
+      tags: [`story-${user}-${slug}`],
       revalidate: 3600
     }
     )

@@ -19,7 +19,6 @@ export async function generateMetadata(
   return {...md}
 }
 
-
 export default async function Page({params}: Props) {
   
   return (
@@ -36,9 +35,9 @@ export default async function Page({params}: Props) {
           </div>
         </Container>
       </section>
-      
+      <Suspense fallback={<UserStoriesSkeleton/>}>
         <UserStoriesServer user={params.user}/>
-      
+      </Suspense>
     </div>
   );
 }
