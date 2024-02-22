@@ -37,4 +37,11 @@ export default function RootLayout({
   )
 }
 
-export const runtime = 'edge'
+// Force static pages
+export const dynamic = "force-static";
+
+// CDN cache currently only works on nodejs runtime
+export const runtime = "nodejs";
+
+// Revalidate in seconds
+export const revalidate = 3600;
