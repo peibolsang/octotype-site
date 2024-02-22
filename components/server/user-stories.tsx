@@ -1,7 +1,7 @@
 import { getAllPosts, getPinnedPosts} from "@/lib/api";
 import Container from "@/components/ui/container";
 import UserStoriesTable from "@/components/client/user-stories-table";
-import { unstable_noStore as noStore } from 'next/cache'
+import { unstable_cache as cache } from 'next/cache'
 import { getUserConfig } from "@/lib/api";
 import PostType from "@/interfaces/post";
 import UserStoriesGrid from "@/components/client/user-stories-grid";
@@ -26,27 +26,35 @@ const movePinnedPostsFirst = async (sortedPosts: PostType[])=> {
     return pinnedPosts.concat(morePosts)
 }
 
-const getUserStories = async (user:string) => {
-    const users = [user]
-    const allPosts = (await Promise.all(users.map(async (user) => await getAllPosts(user))))
-      .flatMap(posts => posts || []);
-  
-    const sortedPosts = allPosts.flat().sort((a, b) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-      });
-  
-    // Parallel fetching
-    const finalPostsReponse = movePinnedPostsFirst(sortedPosts)
-    const configResponse = getUserConfig(user)
-  
-    return await Promise.all([finalPostsReponse,configResponse])
-}
+
 
 
 // Note: Server components should not use React.FC as they cannot have children or use React's context
 const UserStoriesServer = async ({ user }: UserStoriesServerProps) => {
 
-    noStore()
+    const getUserStories = await cache(
+      async (user:string) => {
+        const users = [user]
+        const allPosts = (await Promise.all(users.map(async (user) => await getAllPosts(user))))
+          .flatMap(posts => posts || []);
+      
+        const sortedPosts = allPosts.flat().sort((a, b) => {
+            return new Date(b.date).getTime() - new Date(a.date).getTime();
+          });
+      
+        // Parallel fetching
+        const finalPostsReponse = movePinnedPostsFirst(sortedPosts)
+        const configResponse = getUserConfig(user)
+      
+        return await Promise.all([finalPostsReponse,configResponse])
+    },
+      [`user-stories-${user}`],
+      {
+        tags: [`user-stories-${user}`],
+        revalidate: 3600
+      }
+    )
+
     const [finalPosts, config] = await getUserStories(user)
 
       return (
