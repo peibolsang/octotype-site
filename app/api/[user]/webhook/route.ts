@@ -14,8 +14,8 @@ export async function POST(
     // Get the value of the x-github-event header
     const githubEvent = headers.get('X-Github-Event');
 
-    if (githubEvent === 'issue' || githubEvent === 'issue_comment')
-      if (data && (data.action==="created" || data.action==="edited")){
+    if (githubEvent === 'issue' || githubEvent === 'issue_comment'){
+      if (data && (data.action==="created" || data.action==="edited" || data.action==="labeled")){
 
         const issueLabels: LabelType[] = data.issue.labels.map((label:LabelType) => ({
             color: label.color,
@@ -23,10 +23,15 @@ export async function POST(
          }))
 
         if (isPublished(issueLabels)) revalidatePath(`/${params.user}/stories/${data.issue.number}`)
-      } 
 
-    revalidatePath(`/${params.user}`);
-    
+      } 
+      revalidatePath(`/${params.user}`);
+    }
+
+    if (githubEvent === 'push') {
+      revalidatePath(`/${params.user}`);
+    }
+
     return new Response('Success!', {
       status: 200,
     });
