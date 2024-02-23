@@ -15,8 +15,15 @@ export async function POST(
     const githubEvent = headers.get('X-Github-Event');
 
     if (githubEvent === 'issue' || githubEvent === 'issue_comment')
-      if (data && (data.action==="created" || data.action==="edited") && isPublished(data.labels))
-        revalidatePath(`/${params.user}/stories/${data.issue.number}`)
+      if (data && (data.action==="created" || data.action==="edited")){
+
+        const issueLabels: LabelType[] = data.labels.map((label:LabelType) => ({
+            color: label.color,
+            name: label.name
+         }))
+         
+        if (isPublished(issueLabels)) revalidatePath(`/${params.user}/stories/${data.issue.number}`)
+      } 
 
     revalidatePath(`/${params.user}`);
     
