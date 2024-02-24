@@ -4,7 +4,6 @@ import createMetadata from "@/lib/metadata";
 import { Suspense } from "react";
 import { StorySkeleton } from "@/components/client/skeleton/story-skeleton";
 
-
 type Props = {
   params: {user: string, slug:string}
 }

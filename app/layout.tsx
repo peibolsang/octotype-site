@@ -4,12 +4,9 @@ import Footer from "@/components/client/footer";
 import Meta from "@/components/ui/meta";
 import ThemeClient from '@/components/client/theme';
 import './globals.css'
-import { Inter } from 'next/font/google';
 import MainHeader from '@/components/client/main-header';
 import { GeistSans } from 'geist/font/sans';
-
-
-
+import { GeistMono } from 'geist/font/mono';
 
 
 export default function RootLayout({
@@ -19,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.className} bg-[#f4f1ea] bg-opacity-20 dark:bg-slate-800 dark:text-white`}>
+      <body className={`${GeistMono.variable} ${GeistSans.className}  bg-[#f4f1ea] bg-opacity-20 dark:bg-slate-800 dark:text-white`}>
         <ThemeClient>
           <Meta />
            <MainHeader />

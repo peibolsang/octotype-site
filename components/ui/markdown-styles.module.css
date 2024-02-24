@@ -14,7 +14,7 @@
 }
 
 .markdown code {
-  @apply text-sm bg-slate-300 rounded text-black px-1 py-[1px] overflow-x-auto sm:overflow-scroll
+  @apply text-base bg-slate-300 rounded text-black px-1 overflow-x-auto sm:overflow-scroll
 }
 
 .markdown li {
