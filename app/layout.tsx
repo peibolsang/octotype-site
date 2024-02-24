@@ -6,12 +6,10 @@ import ThemeClient from '@/components/client/theme';
 import './globals.css'
 import { Inter } from 'next/font/google';
 import MainHeader from '@/components/client/main-header';
+import { GeistSans } from 'geist/font/sans';
 
-const font = Inter({
-  variable: '--font-inter',
-  subsets: ['latin'],
-  display: 'swap',
-})
+
+
 
 
 export default function RootLayout({
@@ -21,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${font.className} bg-[#f4f1ea] bg-opacity-20 dark:bg-slate-800 dark:text-white`}>
+      <body className={`${GeistSans.className} bg-[#f4f1ea] bg-opacity-20 dark:bg-slate-800 dark:text-white`}>
         <ThemeClient>
           <Meta />
            <MainHeader />

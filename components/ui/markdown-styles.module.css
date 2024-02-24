@@ -14,8 +14,9 @@
 }
 
 .markdown code {
-  @apply text-base overflow-x-auto sm:overflow-scroll
+  @apply text-sm bg-slate-300 rounded text-black px-1 py-[1px] overflow-x-auto sm:overflow-scroll
 }
+
 .markdown li {
   @apply list-disc ml-10
 }
@@ -59,5 +60,5 @@
 }
 
 .markdown blockquote p{ 
-  @apply m-0 border-l-2 border-l-slate-200 pl-8 italic
+  @apply m-0 border-l-2 border-l-slate-300 pl-8 italic
 }
