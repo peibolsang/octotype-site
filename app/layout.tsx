@@ -25,8 +25,6 @@ export default function RootLayout({
             </div>
           <Footer />
         </ThemeClient>
-        <Analytics />
-        <SpeedInsights/>
       </body>
     </html>
   )

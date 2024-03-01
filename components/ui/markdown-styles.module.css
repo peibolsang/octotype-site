@@ -14,14 +14,11 @@
 }
 
 .markdown code {
-  @apply text-base bg-slate-300 rounded text-black px-1 overflow-x-auto sm:overflow-scroll
+  @apply text-base bg-[#f4f1ea] rounded text-black px-1 overflow-x-auto sm:overflow-scroll
 }
 
 .markdown li {
   @apply list-disc ml-10
-}
-.markdown a {
-  @apply text-blue-700 underline
 }
 
 .markdown h1 {
@@ -37,22 +34,23 @@
 }
 
 .markdown a{
-  @apply text-blue-400 dark:text-white
+  @apply text-blue-400 underline underline-offset-4
 }
+
 .markdown table{
-  @apply border border-slate-300 bg-transparent table-auto
+  @apply border border-[#f4f1ea] bg-transparent table-auto
 }
 
 .markdown table tr{
-  @apply border border-slate-300 bg-transparent
+  @apply border border-[#f4f1ea] bg-transparent
 }
 
 .markdown table td{
-  @apply border border-slate-300 bg-transparent p-2
+  @apply border border-[#f4f1ea] bg-transparent p-2
 }
 
 .markdown table th{
-  @apply border border-slate-300 bg-transparent p-2
+  @apply border border-[#f4f1ea] bg-transparent p-2
 }
 
 .markdown ul.contains-task-list{
@@ -60,5 +58,67 @@
 }
 
 .markdown blockquote p{ 
+  @apply m-0 border-l-2 border-l-[#f4f1ea] pl-8 italic
+}
+
+.markdowndark {
+  @apply text-lg leading-relaxed;
+}
+
+.markdowndark p,
+.markdowndark ul,
+.markdowndark ol,
+.markdowndark blockquote {
+  @apply my-5;
+}
+
+.markdowndark pre {
+  @apply text-base overflow-x-auto sm:overflow-scroll p-2 text-black rounded-md
+}
+
+.markdowndark code {
+  @apply text-base bg-slate-600 rounded text-white px-1 overflow-x-auto sm:overflow-scroll
+}
+
+.markdowndark li {
+  @apply list-disc ml-10
+}
+
+.markdowndark h1 {
+  @apply text-4xl mt-10 mb-4 leading-snug font-semibold
+}
+
+.markdowndark h2 {
+  @apply text-3xl mt-10 mb-4 leading-snug font-semibold
+}
+
+.markdowndark h3 {
+  @apply text-2xl mt-8 mb-4 leading-snug
+}
+
+.markdowndark a{
+  @apply text-blue-300 underline underline-offset-4
+}
+.markdowndark table{
+  @apply border border-slate-300 bg-transparent table-auto
+}
+
+.markdowndark table tr{
+  @apply border border-slate-300 bg-transparent
+}
+
+.markdowndark table td{
+  @apply border border-slate-300 bg-transparent p-2
+}
+
+.markdowndark table th{
+  @apply border border-slate-300 bg-transparent p-2
+}
+
+.markdowndark ul.contains-task-list{
+  @apply list-none
+}
+
+.markdowndark blockquote p{ 
   @apply m-0 border-l-2 border-l-slate-300 pl-8 italic
 }

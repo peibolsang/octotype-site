@@ -1,3 +1,4 @@
+"use client"
 import Avatar from "@/components/ui/avatar";
 import DateFormatter from "@/components/ui/date-formatter";
 import Link from "next/link";
@@ -13,6 +14,8 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {coldarkCold} from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 type Props = {
   title: string;
@@ -42,6 +45,18 @@ const PostPreview = ({
   labels,
   pinned
 }: Props) => {
+
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const { systemTheme, theme, setTheme } = useTheme();
+
+  if (!mounted) return null;
+  const currentTheme = theme === "system" ? systemTheme : theme;
+
   return (
     <Card className={excerpt!=""? `min-h-[500px] m-4`:`min-h-[350px] m-4`} interactive>
       
@@ -76,7 +91,7 @@ const PostPreview = ({
                 excerpt!=""?
                 <div className="line-clamp-2 md:line-clamp-2 lg:line-clamp-5">
                   <Markdown
-                    className={markdownStyles["markdown"]} 
+                    className={currentTheme==="dark"?markdownStyles["markdowndark"]:markdownStyles["markdown"]} 
                     remarkPlugins={[remarkGfm]}
                     children={excerpt}
                     components={{

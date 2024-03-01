@@ -1,3 +1,4 @@
+"use client"
 import type CommentType from "@/interfaces/comment";
 import Avatar from "@/components/ui/avatar";
 import DateFormatter from "@/components/ui/date-formatter";
@@ -12,6 +13,8 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {coldarkCold} from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 type Props = {
   comments: CommentType[];
@@ -20,6 +23,16 @@ type Props = {
 };
 
 const PostComments = ({ comments, issuenumber, username }: Props) => {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const { systemTheme, theme, setTheme } = useTheme();
+
+  if (!mounted) return null;
+  const currentTheme = theme === "system" ? systemTheme : theme;
+
   return (
     <section>
       <Container compact>
@@ -43,7 +56,7 @@ const PostComments = ({ comments, issuenumber, username }: Props) => {
                 <div className="px-5"
                 >
                   <Markdown
-                    className={markdownStyles["markdown"]} 
+                    className={currentTheme==="dark"?markdownStyles["markdowndark"]:markdownStyles["markdown"]} 
                     remarkPlugins={[remarkGfm]}
                     children={comment.content}
                     components={{

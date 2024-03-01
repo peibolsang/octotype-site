@@ -1,6 +1,5 @@
 import { getAllPosts, getAllUsers } from "@/lib/api";
 import {AllStoriesClient} from "@/components/client/all-stories";
-import { unstable_cache as cache } from 'next/cache'
 
 const getAllStories = async () => {
   const users = await getAllUsers();
