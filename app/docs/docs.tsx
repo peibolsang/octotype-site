@@ -1,4 +1,16 @@
-export const docs = 
+"use client"
+import Container from "@/components/ui/container";
+import Section from "@/components/ui/section";
+import markdownStyles from "@/components/ui/markdown-styles.module.css";
+import React from 'react'
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import {dracula, duotoneLight} from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
+
+const docs = 
 `
 # Octotype and GitHub Issues Integration
 Octotype seamlessly integrates specific features from GitHub Issues into your blog posts, enhancing functionality and user experience:
@@ -30,3 +42,49 @@ Example:
 }
 \`\`\`
 `
+
+export const Docs = () => {
+
+
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+      setMounted(true);
+    }, []);
+  
+    const { systemTheme, theme, setTheme } = useTheme();
+  
+    if (!mounted) return null;
+    const currentTheme = theme === "system" ? systemTheme : theme;
+  
+
+    return(
+        <Container>
+          <Section>
+            <Markdown
+                className={currentTheme==="dark"?markdownStyles["markdowndark"]:markdownStyles["markdown"]} 
+                remarkPlugins={[remarkGfm]}
+                children={docs}
+                components={{
+                    code(props){
+                    const {children, className, node, ...rest} = props
+                    const match = /language-(\w+)/.exec(className || '')
+                    return match ? (
+                    <SyntaxHighlighter
+                        PreTag="div"
+                        children={String(children).replace(/\n$/, '')}
+                        language={match[1]}
+                        style={currentTheme==="dark"?dracula:duotoneLight}
+                    />
+                    ) : (
+                    <code {...rest} className={className}>
+                        {children}
+                    </code>
+                    )
+                    }
+                }
+                }
+            />
+          </Section>
+        </Container>
+    )
+}
