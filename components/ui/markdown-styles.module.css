@@ -18,7 +18,7 @@
 }
 
 .markdown li {
-  @apply list-disc ml-10
+  @apply list-disc ml-5
 }
 
 .markdown h1 {
@@ -81,7 +81,7 @@
 }
 
 .markdowndark li {
-  @apply list-disc ml-10
+  @apply list-disc ml-5
 }
 
 .markdowndark h1 {
