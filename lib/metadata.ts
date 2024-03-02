@@ -40,7 +40,7 @@ export const  createPostMetadata = async (user: string, slug:string) =>{
 
     const title=post && post.title && post.content? post.title : `octotype - ${user}`
     const url = post && post.title && post.content? 
-        `https://octotype.app/api/og?date=${encodeURIComponent(post.date)}&reading_time=${encodeURIComponent(post.reading_time)}&author_name${encodeURIComponent(post.author.name)}&author_picture=${encodeURIComponent(post.author.picture)}&author_html_url=${encodeURIComponent(post.author.html_url)}&title=${encodeURIComponent(post.title)}`
+        `https://octotype.app/api/og?title=${encodeURIComponent(post.title)}`
         :
         `https://octotype.app/cover.png`
 
