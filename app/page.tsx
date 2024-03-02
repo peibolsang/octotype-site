@@ -2,7 +2,7 @@ import MainIntro from "@/components/client/main-intro"
 import { HowItWorks } from "@/components/client/how-it-works";
 import { AllStoriesServer } from "@/components/server/all-stories";
 import { Metadata } from "next";
-import createMetadata from "@/lib/metadata";
+import { createMetadata } from "@/lib/metadata";
 import { AllStoriesSkeleton } from "@/components/client/skeleton/all-stories-skeleton";
 import { Suspense } from "react";
 

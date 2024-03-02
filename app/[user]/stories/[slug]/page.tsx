@@ -1,6 +1,6 @@
 import { StoryServer} from "@/components/server/story";
 import { Metadata, ResolvingMetadata } from 'next'
-import createMetadata from "@/lib/metadata";
+import { createPostMetadata } from "@/lib/metadata";
 import { Suspense } from "react";
 import { StorySkeleton } from "@/components/client/skeleton/story-skeleton";
 
@@ -12,7 +12,7 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const md = createMetadata(params.user)
+  const md = createPostMetadata(params.user, params.slug)
   return {...md}
 }
 

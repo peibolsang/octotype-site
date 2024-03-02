@@ -11,12 +11,12 @@ export const runtime = 'edge'
 // Image generation
 export function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
-    const date = searchParams.get('date') || ""
-    const reading_time = searchParams.get('reading_time') || ""
-    const author_name = searchParams.get('author_name') || ""
-    const author_picture = searchParams.get('author_picture') || ""
-    const author_html_url = searchParams.get('author_html_url') || ""
-    const title = searchParams.get('title') || ""
+    const date = decodeURIComponent(searchParams.get('date') || "")
+    const reading_time = decodeURIComponent(searchParams.get('reading_time') || "")
+    const author_name = decodeURIComponent(searchParams.get('author_name') || "")
+    const author_picture = decodeURIComponent(searchParams.get('author_picture') || "")
+    const author_html_url = decodeURIComponent(searchParams.get('author_html_url') || "")
+    const title = decodeURIComponent(searchParams.get('title') || "")
     // query is "hello" for /api/search?query=hello
  
   return new ImageResponse(

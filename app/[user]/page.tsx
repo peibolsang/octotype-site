@@ -1,6 +1,6 @@
 import { UserStoriesServer} from "@/components/server/user-stories";
 import { Metadata, ResolvingMetadata } from "next";
-import createMetadata from "@/lib/metadata";
+import { createMetadata } from "@/lib/metadata";
 import Container from "@/components/ui/container";
 import { CMS_NAME } from "@/lib/constants";
 import { Suspense } from "react";
