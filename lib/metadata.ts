@@ -1,5 +1,3 @@
-import { getPost } from "./api"
-
 export const createMetadata = (user?:string) => {
 
     const title=user?`octotype - ${user}`: `octotype`
@@ -33,45 +31,4 @@ export const createMetadata = (user?:string) => {
             },
         } 
     )
-}
-
-export const  createPostMetadata = async (user: string, slug:string) =>{
-    const post = await getPost(user,slug)
-
-    const title=post && post.title && post.content? post.title : `octotype - ${user}`
-    const url = post && post.title && post.content? 
-        `https://octotype.app/api/og?title=${encodeURIComponent(post.title)}`
-        :
-        `https://octotype.app/cover.png`
-
-        return (
-            {
-                metadataBase: new URL('https://octotype.app'),
-                title: title,
-                description: 'The content discovery platform for developers',
-                openGraph: {
-                    title: title,
-                    description: 'The content discovery platform for developers',
-                    url: 'https://octotype.app',
-                    siteName: title,
-                    images: [
-                        {
-                            url: url, // Must be an absolute URL
-                            width: 800,
-                            height: 600,
-                            alt: title
-                        },
-                     ],
-                    locale: 'en_US',
-                    type: 'website',
-                },
-                twitter: {
-                    card: 'summary_large_image',
-                    title: title,
-                    description: 'The content discovery platform for developers',
-                    creator: '@peibolsang',
-                    images: [url], // Must be an absolute URL
-                },
-            } 
-        )
 }
