@@ -23,4 +23,4 @@ export default function Page() {
 
 export const dynamic = "force-static";
 export const runtime = "nodejs";
-export const revalidate = 3600
+export const revalidate = 3500
