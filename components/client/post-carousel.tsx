@@ -59,7 +59,8 @@ const PostCarousel: React.FC<PostCarouselProps> = ({ posts, basis }) => {
             <Carousel
                 setApi={setApi}
                     opts={{
-                    align: "center",
+                    align: "start",
+                    slidesToScroll: 2,
                     }}
                 className="w-screen md:max-w-xl lg:max-w-4xl"
             >
