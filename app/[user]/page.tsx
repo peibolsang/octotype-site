@@ -5,25 +5,31 @@ import Container from "@/components/ui/container";
 import { CMS_NAME } from "@/lib/constants";
 import { Suspense } from "react";
 import { UserStoriesSkeleton } from "@/components/client/skeleton/user-stories-skeleton";
+import { getAllUsers } from "@/lib/api";
 
 interface UserPageProps {
   params: Promise<{ user: string }>;
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
+export async function generateStaticParams() {
+  const users = await getAllUsers();
+  return users.map((user) => ({
+    user: user,
+  }));
+}
+
 export async function generateMetadata(
-  { params, searchParams }: UserPageProps,
+  { params }: UserPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const resolvedParams = await params;
-  const resolvedSearchParams = searchParams ? await searchParams : undefined;
   const md = createMetadata(resolvedParams.user)
   return {...md}
 }
 
-export default async function Page({params, searchParams}: UserPageProps) {
+export default async function Page({params}: UserPageProps) {
   const resolvedParams = await params;
-  const resolvedSearchParams = searchParams ? await searchParams : undefined;
   
   return (
     <div className="dark:bg-slate-800 dark:text-white">
