@@ -4,23 +4,26 @@ import { createMetadata } from "@/lib/metadata";
 import { Suspense } from "react";
 import { StorySkeleton } from "@/components/client/skeleton/story-skeleton";
 
-type Props = {
-  params: {user: string, slug:string}
+interface StoryPageProps {
+  params: Promise<{ user: string; slug: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export async function generateMetadata(
-  { params }: Props,
+  { params }: StoryPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const md = createMetadata(params.user)
+  const resolvedParams = await params;
+  const md = createMetadata(resolvedParams.user)
   return {...md}
 }
 
-export default function Page({params}: Props) {
+export default async function Page({params}: StoryPageProps) {
+  const resolvedParams = await params;
   return (
     <div className="dark:bg-slate-800 dark:text-white">
       <Suspense fallback={<StorySkeleton />}>
-          <StoryServer user={params.user} slug={params.slug}/>
+          <StoryServer user={resolvedParams.user} slug={resolvedParams.slug}/>
       </Suspense>
     </div>
   );

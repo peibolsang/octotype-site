@@ -48,34 +48,34 @@ export const About = () => {
     const currentTheme = theme === "system" ? systemTheme : theme;
   
 
-    return(
+    return (
         <Container>
-          <Section>
-            <Markdown
-                className={currentTheme==="dark"?markdownStyles["markdowndark"]:markdownStyles["markdown"]} 
-                remarkPlugins={[remarkGfm]}
-                children={about}
-                components={{
-                    code(props){
-                    const {children, className, node, ...rest} = props
-                    const match = /language-(\w+)/.exec(className || '')
-                    return match ? (
-                    <SyntaxHighlighter
-                        PreTag="div"
-                        children={String(children).replace(/\n$/, '')}
-                        language={match[1]}
-                        style={currentTheme==="dark"?dracula:duotoneLight}
-                    />
-                    ) : (
-                    <code {...rest} className={className}>
-                        {children}
-                    </code>
-                    )
-                    }
-                }
-                }
-            />
-          </Section>
+            <Section>
+              <Markdown
+                  className={currentTheme==="dark"?markdownStyles["markdowndark"]:markdownStyles["markdown"]} 
+                  remarkPlugins={[remarkGfm]}
+                  children={about}
+                  components={{
+                      code(props){
+                      const {children, className, node, ...rest} = props
+                      const match = /language-(\w+)/.exec(className || '')
+                      return match ? (
+                      <SyntaxHighlighter
+                          PreTag="div"
+                          children={String(children).replace(/\n$/, '')}
+                          language={match[1]}
+                          style={currentTheme==="dark"?dracula:duotoneLight}
+                      />
+                      ) : (
+                      <code {...rest} className={className}>
+                          {children}
+                      </code>
+                      );
+                      }
+                  }
+                  }
+              />
+            </Section>
         </Container>
-    )
+    );
 }

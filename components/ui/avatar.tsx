@@ -57,7 +57,10 @@ type Props = {
 
 const Avatar = ({ name, picture, html_url }: Props) => {
   return (
-    <Link className="no-underline hover:underline w-fit" href={html_url}>
+    <Link
+      className="no-underline hover:underline w-fit"
+      href={html_url}
+      >
       <div className="flex items-center gap-2 ">
         <ProfilePicture>
           <ProfilePictureImage src={picture} />

@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import type Reactions from '@/interfaces/reactions'
+import type ReactionsType from '@/interfaces/reactions'
 import type Icons from '@/interfaces/icons'
 import { REPO_NAME } from '@/lib/constants'
 import { Badge } from '@/components/ui/badge'
 
 type Props = {
-  reactions: Reactions,
+  reactions: ReactionsType,
   issuenumber: string,
   username: string
 }
@@ -49,7 +49,7 @@ const Reactions = ({ reactions,issuenumber,username }: Props) => {
         </Badge>
       </div>
     </div>
-  )
+  );
 }
 
 export default Reactions

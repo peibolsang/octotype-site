@@ -7,6 +7,7 @@ import {
     ResponsiveCarouselButtons,
     CarouselApi
   } from "@/components/ui/carousel"
+import type { EmblaCarouselType } from 'embla-carousel';
 import Container from "@/components/ui/container";
 import Section from "@/components/ui/section";
 import { Progress } from "@/components/ui/progress";
@@ -22,23 +23,24 @@ const AllStoriesSkeleton = () => {
   const [currentCard, setCurrentCard] = useState(1)
 
   useEffect(() => {
-    if (!api) {
+    if (!api || !api[1]) {
       return;
     }
+    const emblaApi = api[1];
    
-    setNumberOfCards(api.slideNodes().length)
+    setNumberOfCards(emblaApi.slideNodes().length)
 
-    const handleSelect = (api: CarouselApi) => {
-      const slideProgress = Math.round(((api.selectedScrollSnap())/(api.slideNodes().length-1)) * 100)
-      setCurrentCard(api.selectedScrollSnap()+1)
+    const handleSelect = (currentEmblaApi: EmblaCarouselType) => {
+      const slideProgress = Math.round(((currentEmblaApi.selectedScrollSnap())/(currentEmblaApi.slideNodes().length-1)) * 100)
+      setCurrentCard(currentEmblaApi.selectedScrollSnap()+1)
       setProgress(slideProgress);
     };
   
-    api.on("select", handleSelect);
+    emblaApi.on("select", handleSelect);
   
     // Cleanup function
     return () => {
-      api.off("select", handleSelect);
+      emblaApi.off("select", handleSelect);
     };
   }, [api]);
     

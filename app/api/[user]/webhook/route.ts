@@ -6,8 +6,9 @@ const isPublished = (labels: LabelType[]) => labels.find(label=>label.name===LAB
 
 export async function POST(
   request: Request,
-  { params }: { params: { user: string } }
+  { params }: { params: Promise<{ user: string }> }
 ) {
+    const resolvedParams = await params;
     const data = await request.json();
     const headers = request.headers;
 
@@ -22,14 +23,14 @@ export async function POST(
             name: label.name
          }))
 
-        if (isPublished(issueLabels)) revalidatePath(`/${params.user}/stories/${data.issue.number}`)
+        if (isPublished(issueLabels)) revalidatePath(`/${resolvedParams.user}/stories/${data.issue.number}`)
 
       } 
-      revalidatePath(`/${params.user}`);
+      revalidatePath(`/${resolvedParams.user}`);
     }
 
     if (githubEvent === 'push') {
-      revalidatePath(`/${params.user}`);
+      revalidatePath(`/${resolvedParams.user}`);
     }
 
     return new Response('Success!', {

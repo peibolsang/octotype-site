@@ -6,20 +6,24 @@ import { CMS_NAME } from "@/lib/constants";
 import { Suspense } from "react";
 import { UserStoriesSkeleton } from "@/components/client/skeleton/user-stories-skeleton";
 
-type Props = {
-  params: {user: string}
+interface UserPageProps {
+  params: Promise<{ user: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-
 export async function generateMetadata(
-  { params }: Props,
+  { params, searchParams }: UserPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const md = createMetadata(params.user)
+  const resolvedParams = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const md = createMetadata(resolvedParams.user)
   return {...md}
 }
 
-export default async function Page({params}: Props) {
+export default async function Page({params, searchParams}: UserPageProps) {
+  const resolvedParams = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
   
   return (
     <div className="dark:bg-slate-800 dark:text-white">
@@ -27,7 +31,7 @@ export default async function Page({params}: Props) {
         <Container>
           <div className="flex flex-col lg:flex-row justify-between items-baseline gap-[16px]">
             <h1 className="text-3xl md:text-7xl font-bold tracking-tighter leading-tight">
-              {params.user}.
+              {resolvedParams.user}.
             </h1>
             <h4 className="text-center md:text-left text-lg">
               A tech blog using {CMS_NAME} as CMS
@@ -36,7 +40,7 @@ export default async function Page({params}: Props) {
         </Container>
       </section>
       <Suspense fallback={<UserStoriesSkeleton/>}>
-        <UserStoriesServer user={params.user}/>
+        <UserStoriesServer user={resolvedParams.user}/>
       </Suspense>
     </div>
   );

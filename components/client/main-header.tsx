@@ -23,18 +23,14 @@ const MainHeader = () => {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    About
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink href="/about" className={navigationMenuTriggerStyle()} asChild>
+                  About
+                </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/docs" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Docs
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink href="/docs" className={navigationMenuTriggerStyle()} asChild>
+                  Docs
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>

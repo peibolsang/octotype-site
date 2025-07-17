@@ -29,32 +29,31 @@ const PostBody = ({ content }: Props) => {
   return (
     <div className="py-[32px]">
       <div/>
-        <Markdown
-          className={currentTheme==="dark"?markdownStyles["markdowndark"]:markdownStyles["markdown"]} 
-          remarkPlugins={[remarkGfm]}
-          children={content}
-          components={{
-            code(props){
-             const {children, className, node, ...rest} = props
-             const match = /language-(\w+)/.exec(className || '')
-             return match ? (
-              <SyntaxHighlighter
-                PreTag="div"
-                children={String(children).replace(/\n$/, '')}
-                language={match[1]}
-                style={currentTheme==="dark"?dracula:duotoneLight}
-              />
-            ) : (
-              <code {...rest} className={className}>
-                {children}
-              </code>
-            )
-            }
+      <Markdown
+        className={currentTheme==="dark"?markdownStyles["markdowndark"]:markdownStyles["markdown"]} 
+        remarkPlugins={[remarkGfm]}
+        children={content}
+        components={{
+          code(props){
+           const {children, className, node, ...rest} = props
+           const match = /language-(\w+)/.exec(className || '')
+           return match ? (
+            <SyntaxHighlighter
+              PreTag="div"
+              children={String(children).replace(/\n$/, '')}
+              language={match[1]}
+              style={currentTheme==="dark"?dracula:duotoneLight}
+            />
+          ) : (
+            <code {...rest} className={className}>
+              {children}
+            </code>
+          );
           }
+        }
 
-          }
-        />
-
+        }
+      />
     </div>
   );
 };

@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${GeistMono.variable} ${GeistSans.className}  bg-[#f4f1ea] bg-opacity-20 dark:bg-slate-800 dark:text-white`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${GeistMono.variable} ${GeistSans.className}`}>
         <ThemeClient>
           <Meta />
            <MainHeader />
